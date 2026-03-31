@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -9,6 +9,28 @@
 
 <body>
   <h1> TUOTTEET </h1>
+
+  <table>
+    <tr>
+      <th> Nimi </th>
+      <th> Tyyppi </th>
+      <th> Väri </th>
+      <th> Koko </th>
+      <th> Hinta </th>
+      <th> Valmistaja </th>
+    </tr>
+
+    <tr th:each="product : ${product}">
+      <td th:text="${product.name}"></td>
+      <td th:text="${product.type}"></td>
+      <td th:text="${product.color}"></td>
+      <td th:text="${product.size}"></td>
+      <td th:text="${product.price}"></td>
+      <td th:text="${product.manufacturer}"></td>
+    </tr>
+  </table>
+
+  <a th:href="@{/addproduct}"> Lisää tuote </a>
 </body>
 
 </html>
