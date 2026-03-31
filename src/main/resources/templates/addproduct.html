@@ -13,6 +13,39 @@
     <div>
         <form method="post" action="#" th:action="@{/saveproduct}" th:object="@{product}">
             <div class="row g-2">
+                <div class="col">
+                    <input type="text" th:field="${product.name}" placeholder="Tuotteen nimi">
+                </div>
+
+                <div class="col">
+                    <input type="text" th:field="${product.type}" placeholder="Tyyppi">
+                </div>
+
+                <div class="col">
+                    <input type="text" th:field="${product.color}" placeholder="Väri">
+                </div>
+
+                <div class="col">
+                    <input type="text" th:field="${product.size}" placeholder="Koko">
+                </div>
+
+                <div class="col">
+                    <input type="text" th:field="${product.price}" placeholder="Hinta">
+                </div>
+
+                <div class="col">
+                    <input type="text" th:field="${product.manufacturer}" placeholder="Valmistaja">
+                </div>
+
+                <div class="col">
+                    <input type="text" th:field="${product.manufacturer}" placeholder="Valmistaja">
+                </div>
+
+                <div class="col">
+                    <button type="submit">Add book</button>
+                </div>
+
+
 
             </div>
 
