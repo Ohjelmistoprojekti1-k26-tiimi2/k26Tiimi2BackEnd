@@ -5,9 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.CommandLineRunner;
 
-import hh.ohjelmistoprojekti1.varastonseuranta.domain.TuoteRepository;
-import hh.ohjelmistoprojekti1.varastonseuranta.domain.Tuote;
-
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
 
 @SpringBootApplication
 public class VarastonseurantaApplication {
@@ -16,11 +15,10 @@ public class VarastonseurantaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo (TuoteRepository repo){
+	public CommandLineRunner demo(ProductRepository repo) {
 		return (args) ->
-		
-		repo.save(new Tuote("Koiran sadetakki", "Pinkki", "X-Large", 19.99, "Rukka"));
-	}
 
+		repo.save(new Product("Pikku mussukan sadetakki", "Koiran sadetakki", "Pinkki", "X-Large", 19.99, "Rukka"));
+	}
 
 }

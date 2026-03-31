@@ -1,9 +1,10 @@
 package hh.ohjelmistoprojekti1.varastonseuranta.domain;
+
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
-public interface TuoteRepository extends CrudRepository<Tuote, Long> {
+public interface ProductRepository extends CrudRepository<Product, Long> {
 
-    List<Tuote> findByNimi(String nimi);
+    List<Product> findByName(String name);
 
 }
