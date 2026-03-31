@@ -12,6 +12,7 @@ public class Tuote {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long tuoteId;
 
+  private String nimi;
   private String tyyppi;
   private String vari;
   private int koko;
@@ -21,7 +22,8 @@ public class Tuote {
   public Tuote() {
   }
 
-  public Tuote(String tyyppi, String vari, int koko, double hinta, String valmistaja) {
+  public Tuote(String nimi, String tyyppi, String vari, int koko, double hinta, String valmistaja) {
+    this.nimi = nimi;
     this.tyyppi = tyyppi;
     this.vari = vari;
     this.koko = koko;
@@ -35,6 +37,14 @@ public class Tuote {
 
   public void setTuoteId(Long tuoteId) {
     this.tuoteId = tuoteId;
+  }
+
+  public String getNimi() {
+    return nimi;
+  }
+
+  public void setNimi(String nimi) {
+    this.nimi = nimi;
   }
 
   public String getTyyppi() {
