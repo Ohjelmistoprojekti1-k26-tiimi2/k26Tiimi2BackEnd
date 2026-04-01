@@ -11,7 +11,7 @@
     <h1>Tuotteen lisäys</h1>
     <!-- tuotteen lisäys form-->
     <div>
-        <form method="post" action="#" th:action="@{/saveproduct}" th:object="@{product}">
+        <form method="post" action="#" th:action="@{/saveproduct}" th:object="${product}">
             <div class="row g-2">
                 <div class="col">
                     <input type="text" th:field="${product.name}" placeholder="Tuotteen nimi">
@@ -38,11 +38,7 @@
                 </div>
 
                 <div class="col">
-                    <input type="text" th:field="${product.manufacturer}" placeholder="Valmistaja">
-                </div>
-
-                <div class="col">
-                    <button type="submit">Add book</button>
+                    <button type="submit">Add new product</button>
                 </div>
 
 
