@@ -41,10 +41,10 @@ public class ProductController {
   }
 
   // tuotteen muokkaus
-  @RequestMapping("/editproduct/{id}")
+  @GetMapping("/editproduct/{id}")
   public String editProduct(@PathVariable("id") Long productId, Model model) {
 
-    model.addAttribute("product", productRepository.findById(productId));
+    model.addAttribute("product", productRepository.findById(productId).orElse(null));
     return "editproduct"; // editproduct.html
   }
 
