@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.CommandLineRunner;
 
-import hh.ohjelmistoprojekti1.varastonseuranta.domain.Manufacturer;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
