@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ManufacturerRepository extends CrudRepository<Manufacturer, Long> {
 
-    List<Product> findByName(String manufacturer);
+    List<Manufacturer> findByManufacturer(String manufacturer);
 
 }
