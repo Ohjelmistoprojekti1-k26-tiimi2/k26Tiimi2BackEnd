@@ -2,6 +2,7 @@ package hh.ohjelmistoprojekti1.varastonseuranta.web;
 
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
