@@ -15,10 +15,15 @@ public class VarastonseurantaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(ProductRepository repo) {
-		return (args) ->
+	public CommandLineRunner demo(ProductRepository productRepo) {
+		return (args) -> {
 
-		repo.save(new Product("Pikku mussukan sadetakki", "Koiran sadetakki", "Pinkki", "X-Large", 19.99, "Rukka"));
+			productRepo.save(
+					new Product("Pikku mussukan sadetakki", "Koiran sadetakki", "Pinkki", "X-Large", 19.99, "Rukka"));
+			productRepo
+					.save(new Product("Pikku mussukan tohvelit", "Koiran tohvelit", "Musta", "X-Small", 25, "Rukka"));
+		};
+
 	}
 
 }
