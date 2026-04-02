@@ -6,8 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-
-
 public class Manufacturer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,13 +13,16 @@ public class Manufacturer {
 
     private String manufacturer;
 
-    public Manufacturer (){
+    // parametriton konstruktori
+    public Manufacturer() {
     }
 
-    public Manufacturer (String manufacturer){
+    // parametrillinen konstruktori
+    public Manufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
 
+    // getterit ja setterit
     public Long getManufacturerId() {
         return manufacturerId;
     }
@@ -38,10 +39,10 @@ public class Manufacturer {
         this.manufacturer = manufacturer;
     }
 
+    // toString
     @Override
     public String toString() {
         return "Manufacturer [manufacturerId=" + manufacturerId + ", manufacturer=" + manufacturer + "]";
     }
-
 
 }
