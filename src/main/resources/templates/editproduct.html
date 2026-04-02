@@ -11,6 +11,7 @@
   <h4>Muokkaa tuotetta</h4>
 
   <form th:object="${product}" th:action="@{/saveproduct}" action="#" method="post">
+
     <input type="hidden" th:field="${product.productId}" />
 
     <div>
