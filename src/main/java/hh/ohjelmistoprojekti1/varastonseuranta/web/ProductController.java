@@ -33,19 +33,27 @@ public class ProductController {
     return "addproduct"; // addproduct.html
   }
 
-  // tuotteen tallennus
+  // tuotteen tallennus - Save product
   @PostMapping("/saveproduct")
   public String save(@ModelAttribute Product product) {
     productRepository.save(product);
     return "redirect:/index"; // index.html
   }
 
-  // tuotteen muokkaus
+  // tuotteen muokkaus - Edit product
   @GetMapping("/editproduct/{id}")
   public String editProduct(@PathVariable("id") Long productId, Model model) {
 
     model.addAttribute("product", productRepository.findById(productId).orElse(null));
     return "editproduct"; // editproduct.html
+  }
+
+  // poista tuote - Delete product
+  @GetMapping("/deleteproduct/{id}")
+  public String deleteProduct(@PathVariable("id") Long productId, Model model) {
+    productRepository.deleteById(productId);
+
+    return "redirect:/index"; // index.html
   }
 
 }
