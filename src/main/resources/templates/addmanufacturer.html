@@ -12,7 +12,7 @@
     <form th:action="@{/savemanufacturer}" th:object="${manufacturer}" method="post">
         <div>
             <label>Author</label>
-            <input type="text" th:field="*{manufacturer.name}" placeholder="Valmistaja" />
+            <input type="text" th:field="*{manufacturer.manufacturer}" placeholder="Valmistaja" />
 
             <button type="submit">Lisää valmistaja</button>
         </div>
