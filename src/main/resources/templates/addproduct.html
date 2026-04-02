@@ -34,11 +34,16 @@
                 </div>
 
                 <div class="col">
-                    <input type="text" th:field="${product.manufacturer}" placeholder="Valmistaja">
+                    <select th:field="${product.manufacturer}">
+                        <option value="">Valitse valmistaja</option>>
+                        <option value="Rukka">Rukka</option>>
+                        <option value="Hurtta">Hurtta</option>>
+                        <option value="Pomppa">Pomppa</option>>
+                    </select>
                 </div>
 
                 <div class="col">
-                    <button type="submit">Add new product</button>
+                    <button type="submit">Lisää tuote</button>
                 </div>
 
 

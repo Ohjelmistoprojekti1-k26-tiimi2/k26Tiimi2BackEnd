@@ -19,7 +19,7 @@ public class ProductController {
     this.productRepository = productRepository;
   }
 
-  @GetMapping("/index")
+  @GetMapping({ "/", "/index" })
   public String main(Model model) {
 
     model.addAttribute("products", productRepository.findAll());
@@ -37,7 +37,7 @@ public class ProductController {
   @PostMapping("/saveproduct")
   public String save(@ModelAttribute Product product) {
     productRepository.save(product);
-    return "redirect:../index"; // index.html
+    return "redirect:/index"; // index.html
   }
 
   // tuotteen muokkaus
