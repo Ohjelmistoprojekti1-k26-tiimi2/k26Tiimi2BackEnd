@@ -28,7 +28,7 @@
       <td th:text="${product.price}"></td>
       <td th:text="${product.manufacturer}"></td>
       <td><a th:href="@{/editproduct/{id}(id=${product.productId})}">Muokkaa</a></td>
-      <!-- <td><a th:href="">Poista</a></td> -->
+      <td><a th:href="@{/deleteproduct/{id}(id=${product.productId})}">Poista</a></td>
 
     </tr>
   </table>
