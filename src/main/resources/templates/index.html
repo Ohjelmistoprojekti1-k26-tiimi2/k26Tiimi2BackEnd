@@ -26,8 +26,12 @@
       <td th:text="${product.color}"></td>
       <td th:text="${product.size}"></td>
       <td th:text="${product.price}"></td>
+      <!-- valmistajalista dropdownina-->
       <td th:text="${product.manufacturer}"></td>
-      <td><a th:href="@{/editproduct/{id}(id=${product.productId})}">Muokkaa</a></td>
+
+      <!-- muokkaus -näppäin -->
+      <td><a th:href="@{/editproduct/{id} (id=${product.productId})}">Muokkaa</a></td>
+      <!-- poista -näppäin  -->
       <td><a th:href="@{/deleteproduct/{id}(id=${product.productId})}">Poista</a></td>
 
     </tr>
