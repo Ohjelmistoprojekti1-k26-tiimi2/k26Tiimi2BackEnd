@@ -9,13 +9,15 @@
 
 <body>
     <h4>Lisää valmistaja</h4>
+    <!-- uuden valmistajatiedon lisäys -->
     <form th:action="@{/savemanufacturer}" th:object="${manufacturer}" method="post">
         <div>
             <input type="text" th:field="${manufacturer.manufacturer}" placeholder="Valmistaja" />
 
             <button type="submit">Lisää valmistaja</button>
         </div>
-
+    </form>
+    <br>
 
 
 </body>
