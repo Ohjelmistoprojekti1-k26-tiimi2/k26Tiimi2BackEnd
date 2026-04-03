@@ -28,7 +28,7 @@ public class ManufacturerController {
     @PostMapping("/savemanufacturer")
     public String saveManufacturer(@ModelAttribute Manufacturer manufacturer) {
         manufacturerRepository.save(manufacturer);
-        return "redirect:manufacturerlist"; // manufacturerlist.html
+        return "redirect:addmanufacturer"; // addmanufacturer.html
     }
 
 }
