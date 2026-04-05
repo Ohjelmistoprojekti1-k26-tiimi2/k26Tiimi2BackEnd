@@ -35,11 +35,10 @@
     </div>
 
     <div>
-      <select th:field="${product.manufacturer}">
+      <select id="manufacturerlist" th:field="${product.manufacturer}" class="form-select">
         <option value="">Valitse valmistaja</option>
-        <option value="Rukka">Rukka</option>
-        <option value="Hurtta">Hurtta</option>
-        <option value="Pomppa">Pomppa</option>
+        <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.manufacturerId}"
+          th:text="${manufacturer.mname}"></option>
       </select>
     </div>
 
