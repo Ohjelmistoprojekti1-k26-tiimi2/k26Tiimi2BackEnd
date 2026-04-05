@@ -1,9 +1,15 @@
 package hh.ohjelmistoprojekti1.varastonseuranta.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Manufacturer {
@@ -11,15 +17,19 @@ public class Manufacturer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long manufacturerId;
 
-    private String manufacturer;
+    private String mname;
+
+    @JsonIgnoreProperties("manufacturer")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "manufacturer")
+    private List<Product> products;
 
     // parametriton konstruktori
     public Manufacturer() {
     }
 
     // parametrillinen konstruktori
-    public Manufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public Manufacturer(String mname) {
+        this.mname = mname;
     }
 
     // getterit ja setterit
@@ -31,18 +41,26 @@ public class Manufacturer {
         this.manufacturerId = manufacturerId;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getMname() {
+        return mname;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setMname(String mname) {
+        this.mname = mname;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     // toString
     @Override
     public String toString() {
-        return "Manufacturer [manufacturerId=" + manufacturerId + ", manufacturer=" + manufacturer + "]";
+        return "Manufacturer [manufacturerId=" + manufacturerId + ", mname=" + mname + "]";
     }
 
 }
