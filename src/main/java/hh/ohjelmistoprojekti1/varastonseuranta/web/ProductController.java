@@ -44,14 +44,15 @@ public class ProductController {
   @PostMapping("/saveproduct")
   public String save(@ModelAttribute Product product) {
     productRepository.save(product);
-    return "redirect:index"; // index.html
+    return "redirect:/index"; // index.html
   }
 
   // tuotteen muokkaus - Edit product
   @GetMapping("/editproduct/{id}")
   public String editProduct(@PathVariable("id") Long productId, Model model) {
 
-    model.addAttribute("product", productRepository.findById(productId).orElse(null));
+    Product product = productRepository.findById(productId).orElse(null);
+    model.addAttribute("product", product);
 
     // haetan kaikki valmistajat tietokannasta
     model.addAttribute("manufacturers", manufacturerRepository.findAll());
