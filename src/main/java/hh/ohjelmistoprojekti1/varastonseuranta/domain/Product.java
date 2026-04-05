@@ -50,6 +50,10 @@ public class Product {
   }
 
   // SETTERS
+  public void setProductId(Long productId) {
+    this.productId = productId;
+  }
+
   public void setName(String name) {
     this.name = name;
   }
