@@ -18,17 +18,25 @@ public class ManufacturerController {
         this.manufacturerRepository = manufacturerRepository;
     }
 
-    // uuden valmistajan lisääminen/tallentaminen
+    // uuden valmistajan lisääminen (form)
     @GetMapping("/addmanufacturer")
     public String addManufacturer(Model model) {
         model.addAttribute("manufacturer", new Manufacturer());
         return "addmanufacturer"; // addmanufacturer.html
     }
 
+    // uuden valmistajatiedon tallennus
     @PostMapping("/savemanufacturer")
     public String saveManufacturer(@ModelAttribute Manufacturer manufacturer) {
         manufacturerRepository.save(manufacturer);
-        return "redirect:addmanufacturer"; // addmanufacturer.html
+        return "redirect:manufacturerlist"; // manufacturerlist.html
+    }
+
+    // lista valmistajista
+    @GetMapping("/manufacturerlist")
+    public String getManufacturers(Model model) {
+        model.addAttribute("manufacturers", manufacturerRepository.findAll());
+        return "manufacturerlist"; // manufacturerlist.html
     }
 
 }
