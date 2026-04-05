@@ -1,9 +1,13 @@
 package hh.ohjelmistoprojekti1.varastonseuranta.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Product {
@@ -17,14 +21,26 @@ public class Product {
   private String color;
   private String size;
   private double price;
-  private String manufacturer;
+
+  @JsonIgnoreProperties("products")
+  @ManyToOne // suhde manufacturer -entityyn
+  @JoinColumn(name = "manufacturerId")
+  private Manufacturer manufacturer;
+
+  // getterit ja setterit manufacturerille
+  public Manufacturer getManufacturer() {
+    return manufacturer;
+  }
+
+  public void setManuracturer(Manufacturer manufacturer) {
+    this.manufacturer = manufacturer;
+  }
 
   // CONSTRUCTORS
-
   public Product() {
   }
 
-  public Product(String name, String type, String color, String size, double price, String manufacturer) {
+  public Product(String name, String type, String color, String size, double price, Manufacturer manufacturer) {
     this.name = name;
     this.type = type;
     this.color = color;
@@ -34,7 +50,6 @@ public class Product {
   }
 
   // SETTERS
-
   public void setName(String name) {
     this.name = name;
   }
@@ -55,12 +70,7 @@ public class Product {
     this.price = price;
   }
 
-  public void setManufacturer(String manufacturer) {
-    this.manufacturer = manufacturer;
-  }
-
   // GETTERS
-
   public Long getProductId() {
     return productId;
   }
@@ -85,8 +95,11 @@ public class Product {
     return price;
   }
 
-  public String getManufacturer() {
-    return manufacturer;
+  // toString
+  @Override
+  public String toString() {
+    return "Product [productId=" + productId + ", name=" + name + ", type=" + type + ", color=" + color + ", size="
+        + size + ", price=" + price + "]";
   }
 
 }
