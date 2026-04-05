@@ -52,6 +52,9 @@ public class ProductController {
   public String editProduct(@PathVariable("id") Long productId, Model model) {
 
     model.addAttribute("product", productRepository.findById(productId).orElse(null));
+
+    // haetan kaikki valmistajat tietokannasta
+    model.addAttribute("manufacturers", manufacturerRepository.findAll());
     return "editproduct"; // editproduct.html
   }
 
