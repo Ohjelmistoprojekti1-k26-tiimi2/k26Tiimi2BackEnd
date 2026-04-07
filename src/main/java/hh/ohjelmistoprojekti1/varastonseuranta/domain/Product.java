@@ -18,8 +18,8 @@ public class Product {
 
   private String name;
   private String type;
-  private String color;
-  private String size;
+  private String color; // pois
+  private String size; // pois
   private double price;
 
   @JsonIgnoreProperties("products")
