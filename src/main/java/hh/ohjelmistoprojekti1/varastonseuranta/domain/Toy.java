@@ -1,10 +1,9 @@
 package hh.ohjelmistoprojekti1.varastonseuranta.domain;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
-@Entity
+
 public class Toy {
 
   private String toyType;
