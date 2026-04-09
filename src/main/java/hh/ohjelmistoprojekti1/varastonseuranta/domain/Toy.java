@@ -5,7 +5,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 @Entity
-public class Toy {
+public class Toy extends Product {
 
   private String toyType;
 
