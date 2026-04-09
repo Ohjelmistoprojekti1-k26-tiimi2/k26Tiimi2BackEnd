@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valmistajatieto</title>
+</head>
+
+<body>
+    <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
+    <h4>Lisää valmistaja</h4>
+    <!-- uuden valmistajatiedon lisäys -->
+    <form th:action="@{/editmanufacturer}" th:object="${manufacturer}" method="post">
+        <div>
+            <input type="hidden" th:field="${manufacturer.manufacturerId}">
+            <input type="text" th:field="${manufacturer.mname}" placeholder="Valmistaja" />
+
+            <button type="submit">Tallenna muokkaukset</button>
+        </div>
+    </form>
+    <br>
+
+
+</body>
+
+</html>
