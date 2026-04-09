@@ -25,7 +25,7 @@ public class ProductController {
   // etusivu / lista tuotteista
   @GetMapping({ "/", "/index" })
   public String main(Model model) {
-
+    // haetaan kaikki tuotteet
     model.addAttribute("products", productRepository.findAll());
     return "index"; // index.html
   }
