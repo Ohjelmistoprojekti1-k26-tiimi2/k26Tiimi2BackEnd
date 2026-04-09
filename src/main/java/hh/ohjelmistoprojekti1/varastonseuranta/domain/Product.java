@@ -58,7 +58,7 @@ public class Product {
     this.name = name;
   }
 
-  public void setType(String type) {
+  public void setProductType(String type) {
     this.productType = type;
   }
 
@@ -75,7 +75,7 @@ public class Product {
     return name;
   }
 
-  public String getType() {
+  public String getProductType() {
     return productType;
   }
 
