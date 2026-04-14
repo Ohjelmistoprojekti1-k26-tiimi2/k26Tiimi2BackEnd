@@ -33,7 +33,7 @@ public class ProductController {
   // uuden tuotteen lisäys (lomake)
   @GetMapping("/addproduct")
   public String addProduct(Model model) {
-    model.addAttribute("product", new Product());
+    model.addAttribute("productForm", new ProductForm());
 
     // haetan kaikki valmistajat tietokannasta
     model.addAttribute("manufacturers", manufacturerRepository.findAll());
