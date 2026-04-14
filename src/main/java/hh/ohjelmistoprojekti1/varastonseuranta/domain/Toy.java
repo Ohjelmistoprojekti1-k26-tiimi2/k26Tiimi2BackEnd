@@ -7,10 +7,11 @@ import jakarta.persistence.Enumerated;
 @Entity
 public class Toy extends Product {
 
-  private String toyType;
+  private String toyType; // vinkulelu, purulelu, aktivointilelu, heittolelu, älypelit, vetolelut,
+                          // vesilelut, pallot, pehmolelut.
 
   @Enumerated(EnumType.STRING)
-  private Size toySize;
+  private Size toySize; // lelun koko - ei koiran koko
 
   // CONSTRUCTORS
   public Toy() {

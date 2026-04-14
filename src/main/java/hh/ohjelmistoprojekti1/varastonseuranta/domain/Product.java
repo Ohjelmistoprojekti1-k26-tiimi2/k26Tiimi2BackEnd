@@ -18,7 +18,7 @@ public class Product {
 
   // @NotBlank(message = "Name is mandatory")
   private String name;
-  private String productType;
+  private String productType; // ruoka, vaate, lelu
 
   // @NotBlank(message = "Price is mandatory")
   private double price;

@@ -5,8 +5,8 @@ import jakarta.persistence.Entity;
 @Entity
 public class Food extends Product {
 
-  private String foodType;
-  private String dogAge;
+  private String foodType; // kuivaruoka, märkäruoka, raakaruoka, herkätruoat.
+  private String dogAge; // koiran ikä: pentu, adult, seniori
 
   // CONSTRUCTORS
   public Food() {
