@@ -36,7 +36,7 @@ public class ProductFormController {
                 .findById(form.getManufacturerId())
                 .orElse(null);
 
-        // Luodaan oikea olio käyttäjän valinnan perusteella
+        // Luodaan vaate, jos käyttäjä valitsee tyypiksi vaatteen
         if (form.getProductType().equals("clothing")) {
 
             Clothing clothing = new Clothing();
@@ -48,6 +48,8 @@ public class ProductFormController {
 
             productRepository.save(clothing);
 
+        // Luodaan ruoka, jos käyttäjä valitsee tyypiksi ruoan
+            
         } else if (form.getProductType().equals("food")) {
 
             Food food = new Food();
@@ -58,6 +60,9 @@ public class ProductFormController {
             food.setAge(form.getAge());
 
             productRepository.save(food);
+
+        // Luodaan lelu, jos käyttäjä valitsee tyypiksi lelun
+
 
         } else if (form.getProductType().equals("toy")) {
 

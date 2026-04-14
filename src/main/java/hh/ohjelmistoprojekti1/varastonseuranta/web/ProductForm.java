@@ -2,7 +2,7 @@ package hh.ohjelmistoprojekti1.varastonseuranta.web;
 
 public class ProductForm {
 
-    // tuotteen tyyppi: vaate, ruoka tai lelu
+    // tuotteen tyyppi (vaate, ruoka tai lelu)
     private String productType;
 
     private String name;
