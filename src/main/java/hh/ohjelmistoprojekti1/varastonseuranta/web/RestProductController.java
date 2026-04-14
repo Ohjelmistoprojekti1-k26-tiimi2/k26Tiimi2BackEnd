@@ -33,8 +33,9 @@ public class RestProductController {
     //HAKEE YHDEN TUOTTEEN ID:N PERUSTEELLA
     @GetMapping("/{id}")
     @ResponseBody
-    public Optional<Product> getProductById(@PathVariable("id") Long productId){
-        return productRepository.findById(productId);
+    public Product getProductById(@PathVariable("id") Long productId){
+        return productRepository.findById(productId)
+            .orElseThrow(() -> new RuntimeException("Tuotetta ei löytynyt"));
     }
     //LISÄÄ UUDEN TUOTTEEN
     @PostMapping
