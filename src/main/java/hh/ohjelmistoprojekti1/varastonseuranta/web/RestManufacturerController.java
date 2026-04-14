@@ -13,6 +13,8 @@ import hh.ohjelmistoprojekti1.varastonseuranta.domain.Manufacturer;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
 
 
+
+
 @RestController
 @RequestMapping("/manufacturers")
 public class RestManufacturerController {
