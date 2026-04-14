@@ -67,7 +67,6 @@
 		</dependency>
 		
 		
-		
 		<!-- DATABASE -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -82,7 +81,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-h2console</artifactId>
 		</dependency>
-
+	
 	</dependencies>
 
 	<build>

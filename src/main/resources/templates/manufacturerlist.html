@@ -8,18 +8,35 @@
 </head>
 
 <body>
-    <h4>Lista valmistajista</h4>
-    <table>
-        <tr>
-            <th>Nimi</th>
-        </tr>
-        <tr th:each="manufacturer : ${manufacturers}">
-            <td th:text="${manufacturer.mname}"></td>
-        </tr>
-    </table>
-    <br>
+    <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
     <a th:href="@{/index}"> Etusivulle </a>
 
+    <div>
+        <h4>Lisää valmistaja</h4>
+        <!-- uuden valmistajatiedon lisäys -->
+        <form th:action="@{/savemanufacturer}" th:object="${manufacturer}" method="post">
+            <div>
+                <input type="text" th:field="${manufacturer.mname}" placeholder="Valmistaja" />
+
+                <button type="submit">Lisää valmistaja</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <h4>Lista valmistajista</h4>
+        <table>
+            <tr>
+                <th>Nimi</th>
+            </tr>
+            <tr th:each="manufacturer : ${manufacturers}">
+                <td th:text="${manufacturer.mname}"></td>
+                <!--muokkaustoiminto-->
+                <td><a th:href="@{/editmanufacturer/{id} (id=${manufacturer.manufacturerId})}">Muokkaa</a></td>
+                <!--poistotoiminto-->
+                <td><a th:href="@{/deletemanufacturer/{id}(id=${manufacturer.manufacturerId})}">Poista</a></td>
+            </tr>
+        </table>
+    </div>
 </body>
 
 </html>
