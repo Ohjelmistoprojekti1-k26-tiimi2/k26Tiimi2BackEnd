@@ -10,9 +10,12 @@ public class Food extends Product {
 
   // CONSTRUCTORS
   public Food() {
+    // yläluokan tiedot
+    super();
   }
 
-  public Food(String foodType, String age) {
+  public Food(String name, double price, Manufacturer manufacturer, String foodType, String age) {
+    super(name, price, manufacturer);
     this.foodType = foodType;
     this.dogAge = age;
   }
@@ -22,8 +25,8 @@ public class Food extends Product {
     this.foodType = foodType;
   }
 
-  public void setAge(String age) {
-    this.dogAge = age;
+  public void setDogAge(String dogAge) {
+    this.dogAge = dogAge;
   }
 
   // GETTERS
@@ -31,13 +34,13 @@ public class Food extends Product {
     return foodType;
   }
 
-  public String getAge() {
+  public String getDogAge() {
     return dogAge;
   }
 
   // TOSTRING
   @Override
   public String toString() {
-    return "Food: foodType: " + foodType + ", age: " + dogAge + ".";
+    return super.toString() + ", foodType: " + foodType + ", age: " + dogAge + ".";
   }
 }
