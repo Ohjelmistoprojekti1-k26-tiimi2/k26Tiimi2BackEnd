@@ -17,40 +17,48 @@
       <th> Valmistaja </th>
       <th> Tyyppi </th>
       <th> Lisätiedot</th>
-
-
     </tr>
 
     <tr th:each="product : ${products}">
       <td th:text="${product.name}"></td>
       <td th:text="${product.price}"></td>
       <td th:text="${product.manufacturer} ? ${product.manufacturer.mname} : ''"></td>
-      <!--tuotteen tyyppi: lelu/ruoka/vaate-->
+
+      <!-- tuotteen tyyppi -->
       <td th:text="${product.productType}"></td>
 
       <td>
-        <!-- jos tuotteen tyyppi on lelu-->
-        <span th:if="${product.productType == 'Lelu'}"
-          th:text="'Tyyppi: ' + ${product.toyType} + ', Koko: ' + ${product.toySize}"></span>
+        <!-- jos tuotteen tyyppi on lelu -->
+        <div th:if="${product.productType == 'Lelu'}">
+          <div th:text="'Lelutyyppi: ' + ${product.toyType}"></div>
+          <div th:text="'Koko: ' + ${product.toySize}"></div>
+        </div>
 
-        <!-- jos tuotteen tyyppi on ruoka-->
-        <span th:if="${product.productType == 'Ruoka'}"
-          th:text="'Tyyppi: ' + ${product.foodType} + ', Koiran ikä: ' + ${product.dogAge}"></span>
+        <!-- jos tuotteen tyyppi on ruoka -->
+        <div th:if="${product.productType == 'Ruoka'}">
+          <div th:text="'Ruokatyyppi: ' + ${product.foodType}"></div>
+          <div th:text="'Koiran ikä: ' + ${product.dogAge}"></div>
+        </div>
 
-        <!-- jos tuotteen tyyppi on vaate-->
-        <span th:if="${product.productType == 'Vaate'}"
-          th:text="'Koko: ' + ${product.clothingSize} + ', Väri: ' + ${product.color}"></span>
+        <!-- jos tuotteen tyyppi on vaate -->
+        <div th:if="${product.productType == 'Vaate'}">
+          <div th:text="'Koko: ' + ${product.clothingSize}"></div>
+          <div th:text="'Väri: ' + ${product.color}"></div>
+        </div>
       </td>
 
+      <!-- muokkausnäppäin -->
+      <td> 
+        <a th:href="@{/editproduct/{id}(id=${product.productId})}">Muokkaa</a> </td>
 
-
-      <!-- muokkaus -näppäin -->
-      <td><a th:href="@{/editproduct/{id} (id=${product.productId})}">Muokkaa</a></td>
-      <!-- poista -näppäin  -->
-      <td><a th:href="@{/deleteproduct/{id}(id=${product.productId})}">Poista</a></td>
+      <!-- poistonäppäin -->
+      <td>
+        <a th:href="@{/deleteproduct/{id}(id=${product.productId})}">Poista</a>
+      </td>
 
     </tr>
   </table>
+
   <br>
 
   <a th:href="@{/addproduct}"> Lisää tuote </a>
