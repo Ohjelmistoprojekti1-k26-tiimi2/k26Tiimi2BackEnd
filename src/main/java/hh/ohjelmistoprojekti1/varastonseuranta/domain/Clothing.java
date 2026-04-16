@@ -14,16 +14,19 @@ public class Clothing extends Product {
 
   // CONSTRUCTORS
   public Clothing() {
+    // yläluokan tiedot
+    super();
   }
 
-  public Clothing(Size size, String color) {
+  public Clothing(String name, double price, Manufacturer manufacturer, Size size, String color) {
+    super(name, price, manufacturer);
     this.clothingSize = size;
     this.color = color;
   }
 
   // SETTERS
-  public void setSize(Size size) {
-    this.clothingSize = size;
+  public void setClothingSize(Size clothingSize) {
+    this.clothingSize = clothingSize;
   }
 
   public void setColor(String color) {
@@ -31,7 +34,7 @@ public class Clothing extends Product {
   }
 
   // GETTERS
-  public Size getSize() {
+  public Size getClothingSize() {
     return clothingSize;
   }
 
@@ -42,6 +45,6 @@ public class Clothing extends Product {
   // TOSTRING
   @Override
   public String toString() {
-    return "Clothing: size: " + clothingSize + ", color: " + color + ".";
+    return super.toString() + ", size: " + clothingSize + ", color: " + color + ".";
   }
 }
