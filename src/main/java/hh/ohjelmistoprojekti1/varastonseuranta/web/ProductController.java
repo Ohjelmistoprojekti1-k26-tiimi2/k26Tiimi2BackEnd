@@ -131,6 +131,47 @@ public class ProductController {
     return "redirect:/index";
   }
 
+  @GetMapping("/editclothing/{id}")
+  public String editClothing(@PathVariable("id") Long productId, Model model) {
+    Product product = productRepository.findById(productId).orElse(null);
+
+    if (!(product instanceof Clothing clothing)) {
+      return "redirect:/index";
+    }
+
+    model.addAttribute("clothing", clothing);
+    model.addAttribute("manufacturers", manufacturerRepository.findAll());
+    model.addAttribute("sizes", Size.values());
+    return "editclothing";
+  }
+
+  @GetMapping("/editfood/{id}")
+  public String editFood(@PathVariable("id") Long productId, Model model) {
+    Product product = productRepository.findById(productId).orElse(null);
+
+    if (!(product instanceof Food food)) {
+      return "redirect:/index";
+    }
+
+    model.addAttribute("food", food);
+    model.addAttribute("manufacturers", manufacturerRepository.findAll());
+    return "editfood";
+  }
+
+  @GetMapping("/edittoy/{id}")
+  public String editToy(@PathVariable("id") Long productId, Model model) {
+    Product product = productRepository.findById(productId).orElse(null);
+
+    if (!(product instanceof Toy toy)) {
+      return "redirect:/index";
+    }
+
+    model.addAttribute("toy", toy);
+    model.addAttribute("manufacturers", manufacturerRepository.findAll());
+    model.addAttribute("sizes", Size.values());
+    return "edittoy";
+  }
+
   // tuotteen muokkaus - Edit product
   @GetMapping("/editproduct/{id}")
   public String editProduct(@PathVariable("id") Long productId, Model model) {

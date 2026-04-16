@@ -11,32 +11,31 @@
     <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
     <h4>Muokkaa tuotetta</h4>
 
-    <form th:object="${food}" th:action="@{/savetoy}" action="#" method="post">
+    <form method="post" action="#" th:action="@{/savetoy}" th:object="${toy}">
 
-        <input type="hidden" th:field="${toy.toyId}" />
+        <input type="hidden" th:field="*{productId}" />
 
         <div>
-            <input type="text" th:field="${toy.name}" placeholder=" Nimi">
+            <input type="text" th:field="*{name}" placeholder="Nimi">
         </div>
 
         <div>
-            <input type="text" th:field="${toy.type}" placeholder="Tyyppi">
+            <input type="text" th:field="*{toyType}" placeholder="Tyyppi">
         </div>
 
         <div>
-            <input type="text" th:field="${toy.size}" placeholder="Lelun koko">
+            <select th:field="*{toySize}">
+                <option value="">Valitse koko</option>
+                <option th:each="size : ${sizes}" th:value="${size}" th:text="${size}"></option>
+            </select>
         </div>
 
-        <!--<div>
-            <input type="text" th:field="${food.dogAge}" placeholder="Koiran ikä">
-        </div> -->
-
         <div>
-            <input type="text" th:field="${food.price}" placeholder="Hinta">
+            <input type="text" th:field="*{price}" placeholder="Hinta">
         </div>
 
         <div class="col">
-            <select id="manufacturerlist" th:field="${product.manufacturer}" class="form-select">
+            <select id="manufacturerlist" th:field="*{manufacturer}" class="form-select">
                 <option value="">Valitse valmistaja</option>
                 <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.manufacturerId}"
                     th:text="${manufacturer.mname}">
