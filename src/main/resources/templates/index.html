@@ -48,8 +48,23 @@
       </td>
 
       <!-- muokkausnäppäin -->
-      <td> 
-        <a th:href="@{/editproduct/{id}(id=${product.productId})}">Muokkaa</a> </td>
+      <td>
+        <!-- vaate -->
+        <a th:if="${product.productType == 'Vaate'}"
+           th:href="@{/editclothing/{id}(id=${product.productId})}">
+           Muokkaa
+        </a>
+        <!-- ruoka -->
+        <a th:if="${product.productType == 'Ruoka'}"
+           th:href="@{/editfood/{id}(id=${product.productId})}">
+           Muokkaa
+        </a>
+        <!-- lelu -->
+          <a th:if="${product.productType == 'Lelu'}"
+           th:href="@{/edittoy/{id}(id=${product.productId})}">
+           Muokkaa
+        </a>
+      </td>
 
       <!-- poistonäppäin -->
       <td>
