@@ -31,10 +31,10 @@ public class VarastonseurantaApplication {
 
 			// testidataa tuotteista
 			productRepo.save(
-					new Product("Pikku mussukan sadetakki", "Koiran sadetakki", 19.99, manufacturer1));
+					new Product("Pikku mussukan sadetakki", 19.99, manufacturer1));
 
 			productRepo.save(
-					new Product("Pikku mussukan tohvelit", "Koiran tohvelit", 25, manufacturer3));
+					new Product("Pikku mussukan tohvelit", 25, manufacturer3));
 
 		};
 
