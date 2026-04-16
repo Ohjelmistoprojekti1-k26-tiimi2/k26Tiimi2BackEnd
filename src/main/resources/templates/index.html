@@ -13,18 +13,36 @@
   <table>
     <tr>
       <th> Nimi </th>
-      <th> Tyyppi </th>
-      <th> Väri </th>
-      <th> Koko </th>
       <th> Hinta </th>
       <th> Valmistaja </th>
+      <th> Tyyppi </th>
+      <th> Lisätiedot</th>
+
+
     </tr>
 
     <tr th:each="product : ${products}">
       <td th:text="${product.name}"></td>
-      <td th:text="${product.productType}"></td>
       <td th:text="${product.price}"></td>
       <td th:text="${product.manufacturer} ? ${product.manufacturer.mname} : ''"></td>
+      <!--tuotteen tyyppi: lelu/ruoka/vaate-->
+      <td th:text="${product.productType}"></td>
+
+      <td>
+        <!-- jos tuotteen tyyppi on lelu-->
+        <span th:if="${product.productType == 'Lelu'}"
+          th:text="'Tyyppi: ' + ${product.toyType} + ', Koko: ' + ${product.toySize}"></span>
+
+        <!-- jos tuotteen tyyppi on ruoka-->
+        <span th:if="${product.productType == 'Ruoka'}"
+          th:text="'Tyyppi: ' + ${product.foodType} + ', Koiran ikä: ' + ${product.dogAge}"></span>
+
+        <!-- jos tuotteen tyyppi on vaate-->
+        <span th:if="${product.productType == 'Vaate'}"
+          th:text="'Koko: ' + ${product.clothingSize} + ', Väri: ' + ${product.color}"></span>
+      </td>
+
+
 
       <!-- muokkaus -näppäin -->
       <td><a th:href="@{/editproduct/{id} (id=${product.productId})}">Muokkaa</a></td>
