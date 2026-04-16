@@ -7,9 +7,11 @@ import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Size;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Toy;
+import jakarta.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -61,7 +63,14 @@ public class ProductController {
 
   // lelun tallennus (from)
   @PostMapping("/savetoy")
-  public String saveToy(@ModelAttribute Toy toy) {
+  public String saveToy(@Valid @ModelAttribute Toy toy, BindingResult bindingResult, Model model) {
+
+    // virheidenkäsittely validoinnin yhteydessä
+    if (bindingResult.hasErrors()) {
+      model.addAttribute("products", productRepository.findAll());
+      return "addtoy"; // addtoy.html
+    }
+
     // asetetaan tuotteen tyypiksi lelu
     toy.setProductType("Lelu");
 
@@ -79,7 +88,14 @@ public class ProductController {
 
   // ruuan tallennus (from)
   @PostMapping("/savefood")
-  public String saveFood(@ModelAttribute Food food) {
+  public String saveFood(@Valid @ModelAttribute Food food, BindingResult bindingResult, Model model) {
+
+    // virheidenkäsittely validoinnin yhteydessä
+    if (bindingResult.hasErrors()) {
+      model.addAttribute("products", productRepository.findAll());
+      return "addfood"; // addfood.html
+    }
+
     // asetetaan tuotteen tyypiksi ruoka
     food.setProductType("Ruoka");
 
@@ -100,7 +116,14 @@ public class ProductController {
 
   // vaatteen tallennus (from)
   @PostMapping("/saveclothing")
-  public String saveClothing(@ModelAttribute Clothing clothing) {
+  public String saveClothing(@Valid @ModelAttribute Clothing clothing, BindingResult bindingResult, Model model) {
+
+    // virheidenkäsittely validoinnin yhteydessä
+    if (bindingResult.hasErrors()) {
+      model.addAttribute("products", productRepository.findAll());
+      return "addclothing"; // addclothing.html
+    }
+
     // asetetaan tuotteen tyypiksi vaate
     clothing.setProductType("Vaate");
 
