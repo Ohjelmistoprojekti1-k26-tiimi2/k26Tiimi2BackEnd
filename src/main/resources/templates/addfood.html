@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisää ruoka</title>
+</head>
+
+<body>
+    <h1>VARASTONSEURANTAJÄRJESTELMÄ</h1>
+    <h4>Lisää ruoka</h4>
+    <!--formi ruuan lisäämiseksi-->
+    <form method="post" action="#" th:action="@{/savefood}" th:object="${food}">
+        <input type="text" th:field="*{name}" placeholder="Tuotteen nimi">
+        <input type="text" th:field="*{price}" placeholder="Hinta">
+
+        <select th:field="*{manufacturer}">
+            <option value="">Valitse valmistaja</option>
+            <option th:each="m : ${manufacturers}" th:value="${m.manufacturerId}" th:text="${m.mname}">
+            </option>
+        </select>
+
+        <input type="text" th:field="*{foodType}" placeholder="Ruuan tyyppi">
+        <input type="text" th:field="*{dogAge}" placeholder="Koiran ikä">
+
+        <button type="submit">Lisää tuote</button>
+    </form>
+
+
+</body>
+
+</html>

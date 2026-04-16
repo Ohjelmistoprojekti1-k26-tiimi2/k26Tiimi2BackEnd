@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisää vaate</title>
+</head>
+
+<body>
+    <h1>VARASTONSEURANTAJÄRJESTELMÄ</h1>
+    <h4>Lisää vaate</h4>
+    <!--formi vaatteemn lisäämiseksi-->
+    <form method="post" action="#" th:action="@{/saveclothing}" th:object="${clothing}">
+        <input type="text" th:field="*{name}" placeholder="Tuotteen nimi">
+        <input type="text" th:field="*{price}" placeholder="Hinta">
+
+        <select th:field="*{manufacturer}">
+            <option value="">Valitse valmistaja</option>
+            <option th:each="m : ${manufacturers}" th:value="${m.manufacturerId}" th:text="${m.mname}">
+            </option>
+        </select>
+
+        <select th:field="*{clothingSize}">
+            <option value="">Valitse koko</option>
+            <option th:each="size : ${sizes}" th:value="${size}" th:text="${size}"></option>
+        </select>
+        <input type="text" th:field="*{color}" placeholder="Väri">
+
+        <button type="submit">Lisää tuote</button>
+    </form>
+
+
+</body>
+
+</html>
