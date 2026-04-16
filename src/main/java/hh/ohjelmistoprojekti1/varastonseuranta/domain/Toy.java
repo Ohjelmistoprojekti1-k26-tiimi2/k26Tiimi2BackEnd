@@ -15,9 +15,13 @@ public class Toy extends Product {
 
   // CONSTRUCTORS
   public Toy() {
+    // yläluokan tideot
+    super();
   }
 
-  public Toy(String toyType, Size toySize) {
+  public Toy(String name, double price, Manufacturer manufacturer, String toyType, Size toySize) {
+    // yläluokan tiedot
+    super(name, price, manufacturer);
     this.toyType = toyType;
     this.toySize = toySize;
   }
@@ -43,7 +47,7 @@ public class Toy extends Product {
   // TOSTRING
   @Override
   public String toString() {
-    return "Toy [toyType=" + toyType + ", toySize=" + toySize + "]";
+    return super.toString() + ", [toyType=" + toyType + ", toySize=" + toySize + "]";
   }
 
 }
