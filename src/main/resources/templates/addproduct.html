@@ -1,87 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Lisää tuote</title>
 </head>
+
 <body>
 
-<h1>VARASTONSEURANTAJÄRJESTELMÄ</h1>
+    <h1>VARASTONSEURANTAJÄRJESTELMÄ</h1>
 
-<a th:href="@{/index}">Etusivulle</a>
+    <a th:href="@{/index}">Etusivulle</a>
 
-<h3>Lisää uusi tuote</h3>
+    <h3>Lisää uusi tuote</h3>
 
-<form th:action="@{/saveproduct2}" th:object="${productForm}" method="post">
+    <a href="/addtoy"><button type="button">Lisää lelu</button></a>
 
-    <!-- Tuotetyypin valinta -->
-    <div>
-        <label>Valitse tuotetyyppi:</label>
-        <select th:field="*{productType}" onchange="showFields()" id="type">
-            <option value="">-- Valitse --</option>
-            <option value="clothing">Vaate</option>
-            <option value="food">Ruoka</option>
-            <option value="toy">Lelu</option>
-        </select>
-    </div>
+    <a href="/addfood"><button type="button">Lisää ruoka</button></a>
 
-    <!-- Kaikkien tuotteiden yhteiset tiedot -->
-    <div>
-        <input type="text" th:field="*{name}" placeholder="Tuotteen nimi">
-        <input type="text" th:field="*{price}" placeholder="Hinta">
-    </div>
+    <a href="/addclothing"><button type="button">Lisää vaate</button></a>
 
-    <!-- Vaatteelle ominaiset tiedot -->
-    <div id="clothing" style="display:none;">
-        <h4>Vaatteen tiedot</h4>
-        <input type="text" th:field="*{size}" placeholder="Koko (S/M/L)">
-        <input type="text" th:field="*{color}" placeholder="Väri">
-    </div>
-
-    <!-- Ruoalle ominaiset tiedot -->
-    <div id="food" style="display:none;">
-        <h4>Ruoan tiedot</h4>
-        <input type="text" th:field="*{foodType}" placeholder="Ruokatyyppi">
-        <input type="text" th:field="*{age}" placeholder="Koiran ikä (pentu/adult/seniori)">
-    </div>
-
-    <!-- Lelulle ominaiset tiedot -->
-    <div id="toy" style="display:none;">
-        <h4>Lelun tiedot</h4>
-        <input type="text" th:field="*{toyType}" placeholder="Lelutyyppi">
-        <input type="text" th:field="*{toySize}" placeholder="Koko (S/M/L)">
-    </div>
-
-    <!-- Valmistajan valinta -->
-    <div>
-        <label>Valmistaja:</label>
-        <select th:field="*{manufacturerId}">
-            <option value="">-- Valitse valmistaja --</option>
-            <option th:each="m : ${manufacturers}"
-                    th:value="${m.manufacturerId}"
-                    th:text="${m.mname}">
-            </option>
-        </select>
-    </div>
-
-    <br>
-
-    <button type="submit">Tallenna tuote</button>
-
-</form>
-
-<script>
-function showFields() {
-    let type = document.getElementById("type").value;
-
-    document.getElementById("clothing").style.display = "none";
-    document.getElementById("food").style.display = "none";
-    document.getElementById("toy").style.display = "none";
-
-    if (type === "clothing") document.getElementById("clothing").style.display = "block";
-    if (type === "food") document.getElementById("food").style.display = "block";
-    if (type === "toy") document.getElementById("toy").style.display = "block";
-}
-</script>
 
 </body>
+
 </html>
