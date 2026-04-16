@@ -13,7 +13,11 @@
     <!--formi vaatteemn lisäämiseksi-->
     <form method="post" action="#" th:action="@{/saveclothing}" th:object="${clothing}">
         <input type="text" th:field="*{name}" placeholder="Tuotteen nimi">
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></div>
+
         <input type="text" th:field="*{price}" placeholder="Hinta">
+        <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+
 
         <select th:field="*{manufacturer}">
             <option value="">Valitse valmistaja</option>
