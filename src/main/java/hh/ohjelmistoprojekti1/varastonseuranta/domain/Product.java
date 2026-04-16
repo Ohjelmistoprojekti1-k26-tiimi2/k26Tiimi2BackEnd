@@ -6,10 +6,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+// annotaation avulla kerrotaan JPA:lle miten perintä toimii
 public class Product {
 
   @Id
@@ -18,7 +22,8 @@ public class Product {
 
   // @NotBlank(message = "Name is mandatory")
   private String name;
-  private String productType; // ruoka, vaate, lelu
+
+  private String productType;
 
   // @NotBlank(message = "Price is mandatory")
   private double price;
@@ -41,24 +46,23 @@ public class Product {
   public Product() {
   }
 
-  public Product(String name, String type, double price, Manufacturer manufacturer) {
+  public Product(String name, double price, Manufacturer manufacturer) {
     this.name = name;
-    this.productType = type;
     this.price = price;
     this.manufacturer = manufacturer;
   }
 
   // SETTERS
+  public void setProductType(String productType) {
+    this.productType = productType;
+  }
+
   public void setProductId(Long productId) {
     this.productId = productId;
   }
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public void setProductType(String type) {
-    this.productType = type;
   }
 
   public void setPrice(double price) {
@@ -74,19 +78,19 @@ public class Product {
     return name;
   }
 
-  public String getProductType() {
-    return productType;
-  }
-
   public double getPrice() {
     return price;
+  }
+
+  public String getProductType() {
+    return productType;
   }
 
   // toString
   @Override
   public String toString() {
-    return "Product (productId: " + productId + "), name: " + name + ", type: "
-        + productType + ", price: " + price + ".";
+    return "Product (productId: " + productId + "), name: " + name
+        + ", product type: " + productType + ", price: " + price + ".";
   }
 
 }
