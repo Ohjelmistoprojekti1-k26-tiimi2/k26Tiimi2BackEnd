@@ -11,29 +11,31 @@
   <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
   <h4>Muokkaa tuotetta</h4>
 
-  <form th:object="${product}" th:action="@{/saveproduct}" action="#" method="post">
+  <form th:object="${clothing}" th:action="@{/saveclothing}" action="#" method="post">
 
-    <input type="hidden" th:field="${product.productId}" />
+    <input type="hidden" th:field="${clothing.clothingtId}" />
 
     <div>
-      <input type="text" th:field="${product.name}" placeholder="Tuotteen nimi">
+      <input type="text" th:field="${clothing.name}" placeholder="Vaatteen nimi">
+    </div>
+
+    <!--<div>
+      <input type="text" th:field="${clothing.type}" placeholder="Tyyppi">
+    </div> -->
+
+    <div>
+      <input type="text" th:field="${clothing.color}" placeholder="Väri">
     </div>
 
     <div>
-      <input type="text" th:field="${product.type}" placeholder="Tyyppi">
+      <input type="text" th:field="${clothing.price}" placeholder="Hinta">
     </div>
 
     <div>
-      <input type="text" th:field="${product.color}" placeholder="Väri">
+      <input type="text" th:field="${clothing.size}" placeholder="Koko">
     </div>
 
-    <div>
-      <input type="text" th:field="${product.size}" placeholder="Koko">
-    </div>
 
-    <div>
-      <input type="text" th:field="${product.price}" placeholder="Hinta">
-    </div>
 
     <div class="col">
       <select id="manufacturerlist" th:field="${product.manufacturer}" class="form-select">

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muokkaa tuotetta</title>
+</head>
+
+<body>
+    <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
+    <h4>Muokkaa tuotetta</h4>
+
+    <form th:object="${food}" th:action="@{/savetoy}" action="#" method="post">
+
+        <input type="hidden" th:field="${toy.toyId}" />
+
+        <div>
+            <input type="text" th:field="${toy.name}" placeholder=" Nimi">
+        </div>
+
+        <div>
+            <input type="text" th:field="${toy.type}" placeholder="Tyyppi">
+        </div>
+
+        <div>
+            <input type="text" th:field="${toy.size}" placeholder="Lelun koko">
+        </div>
+
+        <!--<div>
+            <input type="text" th:field="${food.dogAge}" placeholder="Koiran ikä">
+        </div> -->
+
+        <div>
+            <input type="text" th:field="${food.price}" placeholder="Hinta">
+        </div>
+
+        <div class="col">
+            <select id="manufacturerlist" th:field="${product.manufacturer}" class="form-select">
+                <option value="">Valitse valmistaja</option>
+                <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.manufacturerId}"
+                    th:text="${manufacturer.mname}">
+                </option>
+            </select>
+        </div>
+
+        <button type="submit">Tallenna</button>
+
+    </form>
+
+</body>
+
+</html>
