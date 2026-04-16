@@ -10,6 +10,10 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.DecimalMin;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -20,12 +24,13 @@ public class Product {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long productId;
 
-  // @NotBlank(message = "Name is mandatory")
+  @NotBlank(message = "Nimitieto on pakollinen")
   private String name;
 
   private String productType;
 
-  // @NotBlank(message = "Price is mandatory")
+  @NotNull(message = "Hintatieto on pakollinen")
+  @DecimalMin(value = "0.0")
   private double price;
 
   @JsonIgnoreProperties("products")
