@@ -16,9 +16,11 @@
         <!-- uuden valmistajatiedon lisäys -->
         <form th:action="@{/savemanufacturer}" th:object="${manufacturer}" method="post">
             <div>
-                <input type="text" th:field="${manufacturer.mname}" placeholder="Valmistaja" />
-
+                <input type="text" th:field="*{mname}" placeholder="Valmistaja" />
                 <button type="submit">Lisää valmistaja</button>
+                <!--validointi-->
+                <div th:if="${#fields.hasErrors('mname')}" th:errors="*{mname}" style="color: red;"></div>
+
             </div>
         </form>
     </div>
