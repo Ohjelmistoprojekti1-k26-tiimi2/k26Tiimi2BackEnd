@@ -2,6 +2,7 @@ package hh.ohjelmistoprojekti1.varastonseuranta.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Manufacturer;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
+import jakarta.validation.Valid;
 
 @Controller
 public class ManufacturerController {
@@ -28,7 +30,15 @@ public class ManufacturerController {
 
     // uuden valmistajatiedon tallennus
     @PostMapping("/savemanufacturer")
-    public String saveManufacturer(@ModelAttribute Manufacturer manufacturer) {
+    public String saveManufacturer(@Valid @ModelAttribute Manufacturer manufacturer, BindingResult bindingResult,
+            Model model) {
+
+        // virheidenkäsittely validoinnissa
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("manufacturers", manufacturerRepository.findAll());
+            return "manufacturerlist"; // manufacturerlist.html
+        }
+
         manufacturerRepository.save(manufacturer);
         return "redirect:/manufacturerlist"; // manufacturerlist.html
     }
