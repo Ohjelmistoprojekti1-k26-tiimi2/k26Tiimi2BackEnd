@@ -57,6 +57,7 @@ public class ProductController {
   @GetMapping("/addtoy")
   public String addToy(Model model) {
     model.addAttribute("toy", new Toy());
+    model.addAttribute("toySizes", Size.values());
     model.addAttribute("manufacturers", manufacturerRepository.findAll());
     return "addtoy"; // addtoy.html
   }
