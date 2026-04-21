@@ -28,7 +28,12 @@
         </select>
 
         <input type="text" th:field="*{toyType}" placeholder="Lelun tyyppi">
-        <input type="text" th:field="*{toySize}" placeholder="Lelun koko">
+
+        <select th:field="*{toySize}">
+            <option value="">Lelun koko</option>
+            <option th:each="size : ${toySizes}" th:value="${size}" th:text="${size}">
+            </option>
+        </select>
 
         <button type="submit">Lisää tuote</button>
     </form>
