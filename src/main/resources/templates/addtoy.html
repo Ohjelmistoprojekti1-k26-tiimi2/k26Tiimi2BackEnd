@@ -10,6 +10,10 @@
 <body>
     <h1>VARASTONSEURANTAJÄRJESTELMÄ</h1>
     <h4>Lisää lelu</h4>
+
+    <a th:href="@{/index}">Etusivulle</a>
+    <a th:href="@{/addproduct}">Takaisin</a>
+
     <!--formi lelun lisäämiseksi-->
     <form method="post" action="#" th:action="@{/savetoy}" th:object="${toy}">
         <div>
