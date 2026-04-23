@@ -10,6 +10,10 @@
 <body>
     <h1>VARASTONSEURANTAJÄRJESTELMÄ</h1>
     <h4>Lisää ruoka</h4>
+
+    <a th:href="@{/index}">Etusivulle</a>
+    <a th:href="@{/addproduct}">Takaisin</a>
+
     <!--formi ruuan lisäämiseksi-->
     <form method="post" action="#" th:action="@{/savefood}" th:object="${food}">
         <input type="text" th:field="*{name}" placeholder="Tuotteen nimi">
