@@ -1,6 +1,7 @@
 package hh.ohjelmistoprojekti1.varastonseuranta.web;
 
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Clothing;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.ClothingRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Food;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.FoodRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
@@ -22,15 +23,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProductController {
 
+  private final ClothingRepository clothingRepository;
   private final FoodRepository foodRepository;
   private final ManufacturerRepository manufacturerRepository;
   private final ProductRepository productRepository;
 
   ProductController(ProductRepository productRepository, ManufacturerRepository manufacturerRepository,
-      FoodRepository foodRepository) {
+      FoodRepository foodRepository, ClothingRepository clothingRepository) {
     this.productRepository = productRepository;
     this.manufacturerRepository = manufacturerRepository;
     this.foodRepository = foodRepository;
+    this.clothingRepository = clothingRepository;
   }
 
   // etusivu / lista tuotteista
@@ -133,6 +136,16 @@ public class ProductController {
     return "editfood";
   }
 
+  // listasivu vaatteista
+  @GetMapping("/clothinglist")
+  public String getClothes(Model model) {
+    // haetaan kaikki vaatetuotteet
+    model.addAttribute("clothes", clothingRepository.findAll());
+    // haetan kaikki valmistajatiedot
+    model.addAttribute("manufacturers", manufacturerRepository.findAll());
+    return "clothinglist"; // clothinglist.html
+  }
+
   // haetaan vaatteen lisäykseen formipohja
   @GetMapping("/addclothing")
   public String addClothing(Model model) {
@@ -158,7 +171,7 @@ public class ProductController {
     clothing.setProductType("Vaate");
 
     productRepository.save(clothing);
-    return "redirect:/index";
+    return "redirect:/clothinglist";
   }
 
   @GetMapping("/editclothing/{id}")
