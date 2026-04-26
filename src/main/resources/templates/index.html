@@ -10,6 +10,14 @@
 <body>
   <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
+  <div>
+    <a th:href="@{/addproduct}"><button type="button">Lisää tuote </button></a>
+    <a th:href="@{/manufacturerlist}"><button type="button">Valmistajatiedot</button> </a>
+    <br>
+    <br>
+  </div>
+
+
   <table>
     <tr>
       <th> Nimi </th>
@@ -50,19 +58,16 @@
       <!-- muokkausnäppäin -->
       <td>
         <!-- vaate -->
-        <a th:if="${product.productType == 'Vaate'}"
-           th:href="@{/editclothing/{id}(id=${product.productId})}">
-           Muokkaa
+        <a th:if="${product.productType == 'Vaate'}" th:href="@{/editclothing/{id}(id=${product.productId})}">
+          Muokkaa
         </a>
         <!-- ruoka -->
-        <a th:if="${product.productType == 'Ruoka'}"
-           th:href="@{/editfood/{id}(id=${product.productId})}">
-           Muokkaa
+        <a th:if="${product.productType == 'Ruoka'}" th:href="@{/editfood/{id}(id=${product.productId})}">
+          Muokkaa
         </a>
         <!-- lelu -->
-          <a th:if="${product.productType == 'Lelu'}"
-           th:href="@{/edittoy/{id}(id=${product.productId})}">
-           Muokkaa
+        <a th:if="${product.productType == 'Lelu'}" th:href="@{/edittoy/{id}(id=${product.productId})}">
+          Muokkaa
         </a>
       </td>
 
@@ -76,9 +81,7 @@
 
   <br>
 
-  <a th:href="@{/addproduct}"> Lisää tuote </a>
-  <br>
-  <a th:href="@{/manufacturerlist}"> Valmistajatiedot </a>
+
 </body>
 
 </html>
