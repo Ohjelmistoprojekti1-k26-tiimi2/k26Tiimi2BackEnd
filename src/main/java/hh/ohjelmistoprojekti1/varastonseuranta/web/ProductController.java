@@ -9,6 +9,7 @@ import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Size;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Toy;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.ToyRepository;
 import jakarta.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -23,17 +24,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProductController {
 
+  private final ToyRepository toyRepository;
   private final ClothingRepository clothingRepository;
   private final FoodRepository foodRepository;
   private final ManufacturerRepository manufacturerRepository;
   private final ProductRepository productRepository;
 
   ProductController(ProductRepository productRepository, ManufacturerRepository manufacturerRepository,
-      FoodRepository foodRepository, ClothingRepository clothingRepository) {
+      FoodRepository foodRepository, ClothingRepository clothingRepository, ToyRepository toyRepository) {
     this.productRepository = productRepository;
     this.manufacturerRepository = manufacturerRepository;
     this.foodRepository = foodRepository;
     this.clothingRepository = clothingRepository;
+    this.toyRepository = toyRepository;
   }
 
   // etusivu / lista tuotteista
@@ -61,6 +64,16 @@ public class ProductController {
     return "redirect:/index"; // index.html
   }
 
+  // listaus leluista
+  @GetMapping("/toylist")
+  public String getToys(Model model) {
+    // haetaan kaikki lelut
+    model.addAttribute("toys", toyRepository.findAll());
+    // haetan kaikki valmistajatiedot
+    model.addAttribute("manufacturers", manufacturerRepository.findAll());
+    return "toylist"; // toylist.html
+  }
+
   // haetaan lelun lisäykseen formipohja
   @GetMapping("/addtoy")
   public String addToy(Model model) {
@@ -77,14 +90,29 @@ public class ProductController {
     // virheidenkäsittely validoinnin yhteydessä
     if (bindingResult.hasErrors()) {
       model.addAttribute("products", productRepository.findAll());
-      return "addtoy"; // addtoy.html
+      return "toylist"; // toylist.html
     }
 
     // asetetaan tuotteen tyypiksi lelu
     toy.setProductType("Lelu");
 
     productRepository.save(toy);
-    return "redirect:/index";
+    return "redirect:/toylist";
+  }
+
+  // lelun muokkaus
+  @GetMapping("/edittoy/{id}")
+  public String editToy(@PathVariable("id") Long productId, Model model) {
+    Product product = productRepository.findById(productId).orElse(null);
+
+    if (!(product instanceof Toy toy)) {
+      return "redirect:/index";
+    }
+
+    model.addAttribute("toy", toy);
+    model.addAttribute("manufacturers", manufacturerRepository.findAll());
+    model.addAttribute("sizes", Size.values());
+    return "edittoy";
   }
 
   // listaus ruuista
@@ -186,20 +214,6 @@ public class ProductController {
     model.addAttribute("manufacturers", manufacturerRepository.findAll());
     model.addAttribute("sizes", Size.values());
     return "editclothing";
-  }
-
-  @GetMapping("/edittoy/{id}")
-  public String editToy(@PathVariable("id") Long productId, Model model) {
-    Product product = productRepository.findById(productId).orElse(null);
-
-    if (!(product instanceof Toy toy)) {
-      return "redirect:/index";
-    }
-
-    model.addAttribute("toy", toy);
-    model.addAttribute("manufacturers", manufacturerRepository.findAll());
-    model.addAttribute("sizes", Size.values());
-    return "edittoy";
   }
 
   // tuotteen muokkaus - Edit product
