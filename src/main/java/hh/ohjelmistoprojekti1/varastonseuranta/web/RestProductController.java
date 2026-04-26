@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +16,7 @@ import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/products")
 // KAIKKI TÄMÄN CONTROLLERIN ENDPOINTIT ALKAVAT TÄLLÄ POLULLA
 public class RestProductController {
     // REPOSITORIO JONKA KAUTTA HAETAAN JA TALLENNETAAN DATAA TIETOKANTAAN
@@ -39,7 +40,7 @@ public class RestProductController {
 
     // LISÄÄ UUDEN TUOTTEEN
     @PostMapping
-    public Product newProduct(Product newProduct) {
+    public Product newProduct(@RequestBody Product newProduct) {
         return productRepository.save(newProduct);
     }
 
@@ -51,13 +52,9 @@ public class RestProductController {
 
     // PÄIVITTÄÄ OLEMASSA OLEVAN TUOTTEEN
     @PutMapping("/{id}")
-    public Product editProduct(Product editedProduct,
-            @PathVariable("id") Long productId) {
-
-        // ASETETAAN OIKEA ID, JOTTA OIKEA TUOTE PÄIVITTYY
+    public Product editProduct(@RequestBody Product editedProduct,
+                               @PathVariable("id") Long productId) {
         editedProduct.setProductId(productId);
-
-        // TALLENNETAAN PÄIVITETTY TUOTE TIETOKANTAAN
         return productRepository.save(editedProduct);
     }
 }
