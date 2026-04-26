@@ -14,10 +14,10 @@ public class Food extends Product {
     super();
   }
 
-  public Food(String name, double price, Manufacturer manufacturer, String foodType, String age) {
+  public Food(String name, double price, Manufacturer manufacturer, String foodType, String dogAge) {
     super(name, price, manufacturer);
     this.foodType = foodType;
-    this.dogAge = age;
+    this.dogAge = dogAge;
   }
 
   // SETTERS
@@ -41,6 +41,6 @@ public class Food extends Product {
   // TOSTRING
   @Override
   public String toString() {
-    return super.toString() + ", foodType: " + foodType + ", age: " + dogAge + ".";
+    return super.toString() + ", foodType: " + foodType + ", dogAge: " + dogAge + ".";
   }
 }

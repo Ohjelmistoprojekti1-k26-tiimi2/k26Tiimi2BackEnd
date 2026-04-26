@@ -9,6 +9,9 @@
 
 <body>
   <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
+
+  <a th:href="@{/clothinglist}"><button type="button">Takaisin</button></a>
+
   <h4>Muokkaa tuotetta</h4>
 
   <form method="post" action="#" th:action="@{/saveclothing}" th:object="${clothing}">
@@ -37,7 +40,8 @@
     <div class="col">
       <select id="manufacturerlist" th:field="*{manufacturer}" class="form-select">
         <option value="">Valitse valmistaja</option>
-        <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.manufacturerId}" th:text="${manufacturer.mname}">
+        <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.manufacturerId}"
+          th:text="${manufacturer.mname}">
         </option>
       </select>
     </div>
