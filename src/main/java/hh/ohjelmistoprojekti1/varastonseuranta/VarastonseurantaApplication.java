@@ -14,6 +14,8 @@ import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Size;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.Toy;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.ToyRepository;
 
 @SpringBootApplication
 public class VarastonseurantaApplication {
@@ -24,7 +26,7 @@ public class VarastonseurantaApplication {
 
 	@Bean
 	public CommandLineRunner demo(ProductRepository productRepo, ManufacturerRepository manufacturerRepository,
-			FoodRepository foodRepository, ClothingRepository clothingRepository) {
+			FoodRepository foodRepository, ClothingRepository clothingRepository, ToyRepository toyRepository) {
 		return (args) -> {
 
 			// testidataa valmistajsta
@@ -42,6 +44,14 @@ public class VarastonseurantaApplication {
 			manufacturerRepository.save(manufacturer5);
 			Manufacturer manufacturer6 = new Manufacturer("PrimaDog");
 			manufacturerRepository.save(manufacturer6);
+
+			// lelujen valmistaja
+			Manufacturer manufacturer7 = new Manufacturer("KONG");
+			manufacturerRepository.save(manufacturer7);
+			Manufacturer manufacturer8 = new Manufacturer("All For Paws");
+			manufacturerRepository.save(manufacturer8);
+			Manufacturer manufacturer9 = new Manufacturer("Pro Dogs");
+			manufacturerRepository.save(manufacturer9);
 
 			// food -data
 			Food food1 = new Food("Kananappulat", 29.95, manufacturer4, "kuivaruoka", "aikuinen");
@@ -62,6 +72,14 @@ public class VarastonseurantaApplication {
 			clothingRepository.save(clothing3);
 			Clothing clothing4 = new Clothing("Karvaturren talvitakki", 37.99, manufacturer3, Size.L, "Oliivin vihreä");
 			clothingRepository.save(clothing4);
+
+			// toy -data
+			Toy toy1 = new Toy("Aktivointipallo", 14.95, manufacturer7, "Aktivointilelut", Size.L);
+			toyRepository.save(toy1);
+			Toy toy2 = new Toy("Puruluu Bone", 13.99, manufacturer9, "Purulelut", Size.M);
+			toyRepository.save(toy2);
+			Toy toy3 = new Toy("Possupehmo", 10.99, manufacturer8, "Pehmolelut", Size.S);
+			toyRepository.save(toy3);
 
 			// testidataa tuotteista
 			// productRepo.save(
