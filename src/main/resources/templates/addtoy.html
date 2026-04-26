@@ -9,35 +9,55 @@
 
 <body>
     <h1>VARASTONSEURANTAJÄRJESTELMÄ</h1>
-    <h4>Lisää lelu</h4>
 
-    <a th:href="@{/index}">Etusivulle</a>
-    <a th:href="@{/addproduct}">Takaisin</a>
+
+    <div>
+        <a th:href="@{/index}"> <button type="button">Etusivulle</button></a>
+        <a th:href="@{/addproduct}"><button type="button">Takaisin</button></a>
+        <br>
+    </div>
+
+    <h4>Lisää lelu</h4>
 
     <!--formi lelun lisäämiseksi-->
     <form method="post" action="#" th:action="@{/savetoy}" th:object="${toy}">
         <div>
-            <input type="text" th:field="*{name}" placeholder="Tuotteen nimi">
+            <label for="">Lelun nimi: </label>
+            <input type="text" th:field="*{name}" placeholder="Lelun nimi">
             <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></div>
         </div>
         <div>
+            <label for="">Hinta: </label>
             <input type="text" th:field="*{price}" placeholder="Hinta">
             <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
         </div>
 
-        <select th:field="*{manufacturer}">
-            <option value="">Valitse valmistaja</option>
-            <option th:each="m : ${manufacturers}" th:value="${m.manufacturerId}" th:text="${m.mname}">
-            </option>
-        </select>
+        <div>
+            <label for="">Valmistaja: </label>
+            <select th:field="*{manufacturer}">
+                <option value="">Valitse valmistaja</option>
+                <option th:each="m : ${manufacturers}" th:value="${m.manufacturerId}" th:text="${m.mname}">
+                </option>
+            </select>
+        </div>
 
-        <input type="text" th:field="*{toyType}" placeholder="Lelun tyyppi">
+        <div>
+            <label for="">Lelun tyyppi: </label>
+            <input type="text" th:field="*{toyType}" placeholder="Lelun tyyppi">
+        </div>
 
-        <select th:field="*{toySize}">
-            <option value="">Lelun koko</option>
-            <option th:each="size : ${toySizes}" th:value="${size}" th:text="${size}">
-            </option>
-        </select>
+        <div>
+            <label for="">Lelun koko: </label>
+            <select th:field="*{toySize}">
+                <option value="">Lelun koko</option>
+                <option th:each="size : ${toySizes}" th:value="${size}" th:text="${size}">
+                </option>
+            </select>
+            <br>
+            <br>
+        </div>
+
+
 
         <button type="submit">Lisää tuote</button>
     </form>
