@@ -5,12 +5,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.CommandLineRunner;
 
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.Clothing;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.ClothingRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Food;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.FoodRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Manufacturer;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.Size;
 
 @SpringBootApplication
 public class VarastonseurantaApplication {
@@ -21,7 +24,7 @@ public class VarastonseurantaApplication {
 
 	@Bean
 	public CommandLineRunner demo(ProductRepository productRepo, ManufacturerRepository manufacturerRepository,
-			FoodRepository foodRepository) {
+			FoodRepository foodRepository, ClothingRepository clothingRepository) {
 		return (args) -> {
 
 			// testidataa valmistajsta
@@ -49,6 +52,16 @@ public class VarastonseurantaApplication {
 			foodRepository.save(food3);
 			Food food4 = new Food("Lammasta ja riisiä, pentunappulat", 35.95, manufacturer4, "kuivaruoka", "juniori");
 			foodRepository.save(food4);
+
+			// clothing -data
+			Clothing clothing1 = new Clothing("Pikku mussukan sadetakki", 19.99, manufacturer2, Size.M, "Pinkki");
+			clothingRepository.save(clothing1);
+			Clothing clothing2 = new Clothing("Pikku mussukan tohvelit", 24.95, manufacturer2, Size.S, "Musta");
+			clothingRepository.save(clothing2);
+			Clothing clothing3 = new Clothing("Tassuttelijan pusero", 22.95, manufacturer1, Size.L, "Harmaa");
+			clothingRepository.save(clothing3);
+			Clothing clothing4 = new Clothing("Karvaturren talvitakki", 37.99, manufacturer3, Size.L, "Oliivin vihreä");
+			clothingRepository.save(clothing4);
 
 			// testidataa tuotteista
 			// productRepo.save(
