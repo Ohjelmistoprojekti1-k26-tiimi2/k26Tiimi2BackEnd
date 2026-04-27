@@ -15,7 +15,7 @@ import jakarta.validation.constraints.NotBlank;
 @Entity
 public class Manufacturer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long manufacturerId;
 
     @NotBlank(message = "Nimitieto on pakollinen")
