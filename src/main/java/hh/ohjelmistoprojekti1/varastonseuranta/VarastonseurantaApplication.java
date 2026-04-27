@@ -2,7 +2,7 @@ package hh.ohjelmistoprojekti1.varastonseuranta;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Bean;
 import org.springframework.boot.CommandLineRunner;
 
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Clothing;
@@ -11,7 +11,7 @@ import hh.ohjelmistoprojekti1.varastonseuranta.domain.Food;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.FoodRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Manufacturer;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
-import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
+//import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Size;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Toy;
@@ -24,7 +24,7 @@ public class VarastonseurantaApplication {
 		SpringApplication.run(VarastonseurantaApplication.class, args);
 	}
 
-	@Bean
+	//@Bean
 	public CommandLineRunner demo(ProductRepository productRepo, ManufacturerRepository manufacturerRepository,
 			FoodRepository foodRepository, ClothingRepository clothingRepository, ToyRepository toyRepository) {
 		return (args) -> {
