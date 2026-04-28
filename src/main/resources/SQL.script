@@ -28,7 +28,7 @@ CREATE TABLE food (
 
 CREATE TABLE toy (
     product_id INTEGER PRIMARY KEY,
-    food_type VARCHAR(50),
+    toy_type VARCHAR(50),
     toy_size VARCHAR(10),
     FOREIGN KEY (product_id) REFERENCES product(product_id)
 );
