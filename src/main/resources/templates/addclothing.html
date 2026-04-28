@@ -10,6 +10,11 @@
 <body>
     <h1>VARASTONSEURANTAJÄRJESTELMÄ</h1>
     <h4>Lisää vaate</h4>
+
+
+    <a th:href="@{/index}">Etusivulle</a>
+    <a th:href="@{/addproduct}">Takaisin</a>
+
     <!--formi vaatteemn lisäämiseksi-->
     <form method="post" action="#" th:action="@{/saveclothing}" th:object="${clothing}">
         <input type="text" th:field="*{name}" placeholder="Tuotteen nimi">
@@ -33,7 +38,6 @@
 
         <button type="submit">Lisää tuote</button>
     </form>
-
 
 </body>
 
