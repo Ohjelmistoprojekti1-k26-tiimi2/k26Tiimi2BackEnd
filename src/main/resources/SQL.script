@@ -1,0 +1,34 @@
+CREATE TABLE manufacturer (
+    manufacturer_id SERIAL PRIMARY KEY,
+    mname VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE product (
+    product_id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    product_type VARCHAR(255),
+    price DECIMAL(10,2) NOT NULL,
+    manufacturer_id INTEGER,
+    FOREIGN KEY (manufacturer_id) REFERENCES manufacturer(manufacturer_id)
+);
+
+CREATE TABLE clothing (
+    product_id INTEGER PRIMARY KEY,
+    clothing_size VARCHAR(10),
+    color VARCHAR(50),
+    FOREIGN KEY (product_id) REFERENCES product(product_id)
+);
+
+CREATE TABLE food (
+    product_id INTEGER PRIMARY KEY,
+    food_type VARCHAR(10),
+    dog_age VARCHAR(50),
+    FOREIGN KEY (product_id) REFERENCES product(product_id)
+);
+
+CREATE TABLE toy (
+    product_id INTEGER PRIMARY KEY,
+    food_type VARCHAR(50),
+    toy_size VARCHAR(10),
+    FOREIGN KEY (product_id) REFERENCES product(product_id)
+);
