@@ -225,6 +225,8 @@ public class ProductController {
     return "editclothing";
   }
 
+  // PRODUCT
+
   // tuotteen muokkaus - Edit product
   @GetMapping("/editproduct/{id}")
   public String editProduct(@PathVariable("id") Long productId, Model model) {
