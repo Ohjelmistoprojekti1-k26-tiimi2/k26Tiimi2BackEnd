@@ -18,10 +18,6 @@
 
     <h4>Lisää vaate</h4>
 
-
-    <a th:href="@{/index}">Etusivulle</a>
-    <a th:href="@{/addproduct}">Takaisin</a>
-
     <!--formi vaatteemn lisäämiseksi-->
     <form method="post" action="#" th:action="@{/saveclothing}" th:object="${clothing}">
         <div>
@@ -56,14 +52,9 @@
         <div>
             <label for="">Väri: </label>
             <input type="text" th:field="*{color}" placeholder="Väri">
-            <br>
-            <br>
         </div>
 
-
         <button type="submit">Lisää tuote</button>
-
-
 
     </form>
 
