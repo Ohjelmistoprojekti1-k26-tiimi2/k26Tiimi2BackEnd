@@ -47,10 +47,11 @@
         </div>
 
         <div>
-            <label for="">Koiran ikä:</label>
-            <input type="text" th:field="*{dogAge}" placeholder="Koiran ikä">
-            <br>
-            <br>
+            <label for="">Koiran ikä: </label>
+            <select th:field="*{dogAge}">
+                <option value="">Valitse koiran ikä</option>
+                <option th:each="age : ${dogage}" th:value="${age}" th:text="${age}"></option>
+            </select>
         </div>
 
         <button type="submit">Lisää tuote</button>
