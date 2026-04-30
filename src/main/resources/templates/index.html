@@ -10,75 +10,31 @@
 <body>
   <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
-  <table>
-    <tr>
-      <th> Nimi </th>
-      <th> Hinta </th>
-      <th> Valmistaja </th>
-      <th> Tyyppi </th>
-      <th> Lisätiedot</th>
-    </tr>
+  <div>
+    <!--<a th:href="@{/addproduct}"><button type="button">Lisää tuote </button></a>-->
+    <a th:href="@{/manufacturerlist}"><button type="button">Valmistajatiedot</button> </a>
+    <br>
+  </div>
 
-    <tr th:each="product : ${products}">
-      <td th:text="${product.name}"></td>
-      <td th:text="${product.price}"></td>
-      <td th:text="${product.manufacturer} ? ${product.manufacturer.mname} : ''"></td>
+  <div> <!-- ruokatuotteen tiedot -->
+    <h4>Ruuat</h4>
+    <a th:href="@{/foodlist}"> <button type="button">Lista ruuista</button></a>
+    <a th:href="@{/addfood}"><button type="button">Lisää ruoka</button></a>
+  </div>
 
-      <!-- tuotteen tyyppi -->
-      <td th:text="${product.productType}"></td>
+  <div> <!-- vaatetuotteen tiedot -->
+    <h4>Vaatteet</h4>
+    <a th:href="@{/clothinglist}"> <button type="button">Lista vaatteista</button></a>
+    <a th:href="@{/addclothing}"><button type="button">Lisää vaate</button></a>
+  </div>
 
-      <td>
-        <!-- jos tuotteen tyyppi on lelu -->
-        <div th:if="${product.productType == 'Lelu'}">
-          <div th:text="'Lelutyyppi: ' + ${product.toyType}"></div>
-          <div th:text="'Koko: ' + ${product.toySize}"></div>
-        </div>
+  <div> <!-- lelutuotteen tiedot -->
+    <h4>Lelut</h4>
+    <a th:href="@{/toylist}"> <button type="button">Lista leluista</button></a>
+    <a th:href="@{/addtoy}"><button type="button">Lisää lelu</button></a>
+  </div>
 
-        <!-- jos tuotteen tyyppi on ruoka -->
-        <div th:if="${product.productType == 'Ruoka'}">
-          <div th:text="'Ruokatyyppi: ' + ${product.foodType}"></div>
-          <div th:text="'Koiran ikä: ' + ${product.dogAge}"></div>
-        </div>
 
-        <!-- jos tuotteen tyyppi on vaate -->
-        <div th:if="${product.productType == 'Vaate'}">
-          <div th:text="'Koko: ' + ${product.clothingSize}"></div>
-          <div th:text="'Väri: ' + ${product.color}"></div>
-        </div>
-      </td>
-
-      <!-- muokkausnäppäin -->
-      <td>
-        <!-- vaate -->
-        <a th:if="${product.productType == 'Vaate'}"
-           th:href="@{/editclothing/{id}(id=${product.productId})}">
-           Muokkaa
-        </a>
-        <!-- ruoka -->
-        <a th:if="${product.productType == 'Ruoka'}"
-           th:href="@{/editfood/{id}(id=${product.productId})}">
-           Muokkaa
-        </a>
-        <!-- lelu -->
-          <a th:if="${product.productType == 'Lelu'}"
-           th:href="@{/edittoy/{id}(id=${product.productId})}">
-           Muokkaa
-        </a>
-      </td>
-
-      <!-- poistonäppäin -->
-      <td>
-        <a th:href="@{/deleteproduct/{id}(id=${product.productId})}">Poista</a>
-      </td>
-
-    </tr>
-  </table>
-
-  <br>
-
-  <a th:href="@{/addproduct}"> Lisää tuote </a>
-  <br>
-  <a th:href="@{/manufacturerlist}"> Valmistajatiedot </a>
 </body>
 
 </html>

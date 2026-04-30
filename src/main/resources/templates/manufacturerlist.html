@@ -9,13 +9,16 @@
 
 <body>
     <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
-    <a th:href="@{/index}"> Etusivulle </a>
+
+    <a th:href="@{/index}"> <button type="button">Etusivulle</button></a>
 
     <div>
         <h4>Lisää valmistaja</h4>
         <!-- uuden valmistajatiedon lisäys -->
         <form th:action="@{/savemanufacturer}" th:object="${manufacturer}" method="post">
             <div>
+                <label for="">Valmistajan nimitieto: </label>
+                <br>
                 <input type="text" th:field="*{mname}" placeholder="Valmistaja" />
                 <button type="submit">Lisää valmistaja</button>
                 <!--validointi-->
@@ -33,9 +36,11 @@
             <tr th:each="manufacturer : ${manufacturers}">
                 <td th:text="${manufacturer.mname}"></td>
                 <!--muokkaustoiminto-->
-                <td><a th:href="@{/editmanufacturer/{id} (id=${manufacturer.manufacturerId})}">Muokkaa</a></td>
+                <td><a th:href="@{/editmanufacturer/{id} (id=${manufacturer.manufacturerId})}"> <button
+                            type="button">Muokkaa</button></a></td>
                 <!--poistotoiminto-->
-                <td><a th:href="@{/deletemanufacturer/{id}(id=${manufacturer.manufacturerId})}">Poista</a></td>
+                <td><a th:href="@{/deletemanufacturer/{id}(id=${manufacturer.manufacturerId})}"><button
+                            type="button">Poista</button></a></td>
             </tr>
         </table>
     </div>

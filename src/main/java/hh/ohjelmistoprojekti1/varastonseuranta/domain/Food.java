@@ -45,6 +45,6 @@ public class Food extends Product {
   // TOSTRING
   @Override
   public String toString() {
-    return super.toString() + ", foodType: " + foodType + ", age: " + dogAge + ".";
+    return super.toString() + ", foodType: " + foodType + ", dogAge: " + dogAge + ".";
   }
 }

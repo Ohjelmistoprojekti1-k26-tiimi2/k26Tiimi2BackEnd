@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista leluista</title>
+</head>
+
+<body>
+    <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
+
+    <a th:href="@{/index}"><button type="button">Takaisin</button></a>
+
+    <h3>Lelut</h3>
+
+    <div>
+        <table>
+            <tr>
+                <th>Nimi</th>
+                <th>Hinta (€)</th>
+                <th>Valmistaja</th>
+                <th>Tyyppi</th>
+                <th>Lelun koko</th>
+            </tr>
+            <tr th:each="toy : ${toys}">
+                <td th:text="${toy.name}"></td>
+                <td th:text="${toy.price}"></td>
+                <td th:text="${toy.manufacturer} ? ${toy.manufacturer.mname} : '' "></td>
+                <td th:text="${toy.toyType}"></td>
+                <td th:text="${toy.toySize}"></td>
+
+                <!--muokkausnäppäin-->
+                <td>
+                    <a th:href="@{/edittoy/{id}(id=${toy.productId})}"> <button type="button">Muokkaa</button></a>
+                </td>
+                <!-- poistonäppäin -->
+                <td>
+                    <a th:href="@{/deleteproduct/{id}(id=${toy.productId}, redirect='toy')}"> <button
+                            type="button">Poista</button></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

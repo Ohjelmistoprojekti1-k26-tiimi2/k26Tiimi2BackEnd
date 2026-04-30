@@ -9,6 +9,9 @@
 
 <body>
     <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
+
+    <a th:href="@{/foodlist}"><button type="button">Takaisin</button></a>
+
     <h4>Muokkaa tuotetta</h4>
 
     <form method="post" action="#" th:action="@{/savefood}" th:object="${food}">
