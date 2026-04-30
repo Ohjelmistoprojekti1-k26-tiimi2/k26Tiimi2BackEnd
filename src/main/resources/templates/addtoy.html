@@ -25,6 +25,7 @@
             <input type="text" th:field="*{name}" placeholder="Lelun nimi">
             <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></div>
         </div>
+
         <div>
             <label for="">Hinta: </label>
             <input type="text" th:field="*{price}" placeholder="Hinta">
@@ -52,11 +53,7 @@
                 <option th:each="size : ${toySizes}" th:value="${size}" th:text="${size}">
                 </option>
             </select>
-            <br>
-            <br>
         </div>
-
-
 
         <button type="submit">Lisää tuote</button>
     </form>
