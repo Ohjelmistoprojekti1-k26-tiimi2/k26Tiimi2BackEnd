@@ -39,8 +39,13 @@
                 <td><a th:href="@{/editmanufacturer/{id} (id=${manufacturer.manufacturerId})}"> <button
                             type="button">Muokkaa</button></a></td>
                 <!--poistotoiminto-->
-                <td><a th:href="@{/deletemanufacturer/{id}(id=${manufacturer.manufacturerId})}"><button
-                            type="button">Poista</button></a></td>
+                <td>
+                    <a th:href="@{/deletemanufacturer/{id}(id=${manufacturer.manufacturerId})}"
+                        th:attr="data-name=${manufacturer.mname}"
+                        onclick="return confirm('Poistetaanko valmistaja: ' + this.dataset.name + '?');">
+                        <button type="button">Poista</button>
+                    </a>
+                </td>
             </tr>
         </table>
     </div>

@@ -36,8 +36,11 @@
                 </td>
                 <!-- poistonäppäin -->
                 <td>
-                    <a th:href="@{/deleteproduct/{id}(id=${toy.productId}, redirect='toy')}"> <button
-                            type="button">Poista</button></a>
+                    <a th:href="@{/deleteproduct/{id}(id=${toy.productId}, redirect='toy')}"
+                        th:attr="data-name=${toy.name}"
+                        onclick="return confirm('Poistetaanko lelu: ' + this.dataset.name + '?');">
+                        <button type="button">Poista</button>
+                    </a>
                 </td>
             </tr>
         </table>
