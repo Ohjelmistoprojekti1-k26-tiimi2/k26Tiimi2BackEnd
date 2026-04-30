@@ -9,7 +9,10 @@
 
 <body>
     <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
-    <h4>Lisää valmistaja</h4>
+
+    <a th:href="@{/manufacturerlist}"><button type="button"> Peruuta </button></a>
+
+    <h4>Muokkaa valmistajaa</h4>
 
     <!-- uuden valmistajatiedon lisäys -->
     <form th:action="@{/editmanufacturer}" th:object="${manufacturer}" method="post">
