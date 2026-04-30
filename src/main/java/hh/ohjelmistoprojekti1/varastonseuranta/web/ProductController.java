@@ -2,6 +2,7 @@ package hh.ohjelmistoprojekti1.varastonseuranta.web;
 
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Clothing;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ClothingRepository;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.DogAge;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Food;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.FoodRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
@@ -47,6 +48,8 @@ public class ProductController {
     return "index"; // index.html
   }
 
+  // PRODUCT
+
   // uuden tuotteen lisäys (lomake)
   @GetMapping("/addproduct")
   public String addProduct(Model model) {
@@ -63,6 +66,8 @@ public class ProductController {
     productRepository.save(product);
     return "redirect:/index"; // index.html
   }
+
+  // TOY
 
   // listaus leluista
   @GetMapping("/toylist")
@@ -115,6 +120,8 @@ public class ProductController {
     return "edittoy";
   }
 
+  // FOOD
+
   // listaus ruuista
   @GetMapping("/foodlist")
   public String getFoods(Model model) {
@@ -130,6 +137,7 @@ public class ProductController {
   public String addFood(Model model) {
     model.addAttribute("food", new Food());
     model.addAttribute("manufacturers", manufacturerRepository.findAll());
+    model.addAttribute("dogage", DogAge.values());
     return "addfood"; // addfood.html
   }
 
@@ -161,6 +169,7 @@ public class ProductController {
 
     model.addAttribute("food", food);
     model.addAttribute("manufacturers", manufacturerRepository.findAll());
+    model.addAttribute("dogage", DogAge.values());
     return "editfood";
   }
 
