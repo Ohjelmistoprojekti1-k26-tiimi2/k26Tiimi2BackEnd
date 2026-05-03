@@ -20,13 +20,15 @@
                 <th>Nimi</th>
                 <th>Hinta (€)</th>
                 <th>Valmistaja</th>
-                <th>Tyyppi</th>
+                <th>Tuotetyyppi</th>
+                <th>Ruuan tyyppi</th>
                 <th>Koiran ikä</th>
             </tr>
             <tr th:each="food : ${foods}">
                 <td th:text="${food.name}"></td>
                 <td th:text="${food.price}"></td>
                 <td th:text="${food.manufacturer} ? ${food.manufacturer.mname} : '' "></td>
+                <td th:text="${food.productType}"></td>
                 <td th:text="${food.foodType}"></td>
                 <td th:text="${food.dogAge}"></td>
 
