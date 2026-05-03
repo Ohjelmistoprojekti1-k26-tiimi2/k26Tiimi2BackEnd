@@ -13,6 +13,8 @@
     <!-- uuden valmistajatiedon lisäys -->
     <form th:action="@{/editmanufacturer}" th:object="${manufacturer}" method="post">
         <div>
+            <label for="">Valmistajan nimitieto: </label>
+            <br>
             <input type="hidden" th:field="${manufacturer.manufacturerId}">
             <input type="text" th:field="${manufacturer.mname}" placeholder="Valmistaja" />
 
