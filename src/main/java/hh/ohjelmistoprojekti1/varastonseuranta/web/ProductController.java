@@ -90,7 +90,7 @@ public class ProductController {
     // virheidenkäsittely validoinnin yhteydessä
     if (bindingResult.hasErrors()) {
       model.addAttribute("products", productRepository.findAll());
-      return "toylist"; // toylist.html
+      return "addtoy"; // addtoy.html
     }
 
     // asetetaan tuotteen tyypiksi lelu
@@ -140,7 +140,7 @@ public class ProductController {
     // virheidenkäsittely validoinnin yhteydessä
     if (bindingResult.hasErrors()) {
       model.addAttribute("products", productRepository.findAll());
-      return "foodlist"; // foodlist.html
+      return "addfood"; // addfood.html
     }
 
     // asetetaan tuotteen tyypiksi ruoka
