@@ -23,7 +23,7 @@ public class VarastonseurantaApplication {
 		SpringApplication.run(VarastonseurantaApplication.class, args);
 	}
 
-	@Bean
+	//@Bean
 	public CommandLineRunner demo(ProductRepository productRepo, ManufacturerRepository manufacturerRepository,
 			FoodRepository foodRepository, ClothingRepository clothingRepository, ToyRepository toyRepository) {
 		return (args) -> {
