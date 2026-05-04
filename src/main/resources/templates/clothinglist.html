@@ -32,13 +32,13 @@
                 <td th:text="${clothing.clothingSize}"></td>
                 <td th:text="${clothing.color}"></td>
 
-                <!--muokkausnäppäin-->
-                <td>
+                <!--muokkausnäppäin ADMIN -käyttäjälle-->
+                <td sec:authorize="hasAuthority ('ADMIN')">
                     <a th:href="@{/editclothing/{id}(id=${clothing.productId})}"> <button
                             type="button">Muokkaa</button></a>
                 </td>
-                <!-- poistonäppäin -->
-                <td>
+                <!-- poistonäppäin ADMIN -käyttäjälle-->
+                <td sec:authorize="hasAuthority ('ADMIN')">
                     <a th:href="@{/deleteproduct/{id}(id=${clothing.productId}, redirect='clothing')}"> <button
                             type="button">Poista</button></a>
                 </td>

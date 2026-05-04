@@ -33,11 +33,11 @@
                 <td th:text="${toy.toySize}"></td>
 
                 <!--muokkausnäppäin-->
-                <td>
+                <td sec:authorize="hasAuthority ('ADMIN')">
                     <a th:href="@{/edittoy/{id}(id=${toy.productId})}"> <button type="button">Muokkaa</button></a>
                 </td>
                 <!-- poistonäppäin -->
-                <td>
+                <td sec:authorize="hasAuthority ('ADMIN')">
                     <a th:href="@{/deleteproduct/{id}(id=${toy.productId}, redirect='toy')}"> <button
                             type="button">Poista</button></a>
                 </td>
