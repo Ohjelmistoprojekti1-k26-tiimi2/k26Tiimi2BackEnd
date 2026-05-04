@@ -15,20 +15,41 @@ import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Size;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Toy;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ToyRepository;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.User;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.UserRepository;
 
 @SpringBootApplication
 public class VarastonseurantaApplication {
+
+	/*private final UserRepository userRepository;
+
+	VarastonseurantaApplication(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}*/
 
 	public static void main(String[] args) {
 		SpringApplication.run(VarastonseurantaApplication.class, args);
 	}
 
-	//@Bean
-	public CommandLineRunner demo(ProductRepository productRepo, ManufacturerRepository manufacturerRepository,
+	@Bean
+	public CommandLineRunner demo(UserRepository userRepository, ProductRepository productRepo,
+			ManufacturerRepository manufacturerRepository,
 			FoodRepository foodRepository, ClothingRepository clothingRepository, ToyRepository toyRepository) {
 		return (args) -> {
 
-			// testidataa valmistajsta
+			// käyttäjien luonti
+			User user1 = new User("user", "$2a$10$qkhauFziBEN6sas97t6JJey8op8WSIrj6gygLKTpTGTsmFbTfxs46", "USER");
+			User user2 = new User("admin", "$2a$10$zPm.E1mdlrjhuU6u2IfF6uxvD/RRZMdad71/Y/Vo2MpUjjUmDRH8e", "ADMIN");
+			
+			if (userRepository.findByUsername("user") == null) {
+				userRepository.save(user1);
+			}
+
+			if (userRepository.findByUsername("admin") == null) {
+				userRepository.save(user2);
+			}
+
+		/* 	// testidataa valmistajsta
 			Manufacturer manufacturer1 = new Manufacturer("Rukka");
 			manufacturerRepository.save(manufacturer1);
 			Manufacturer manufacturer2 = new Manufacturer("NORDICDOG");
@@ -87,7 +108,7 @@ public class VarastonseurantaApplication {
 			// productRepo.save(
 			// new Product("Pikku mussukan tohvelit", 25, manufacturer3));
 
-		};
+		*/}; 
 
 	}
 
