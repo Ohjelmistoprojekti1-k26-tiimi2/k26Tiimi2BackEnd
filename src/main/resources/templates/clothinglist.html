@@ -20,6 +20,7 @@
                 <th>Nimi</th>
                 <th>Hinta (€)</th>
                 <th>Valmistaja</th>
+                <th>Tuotetyyppi</th>
                 <th>Koko</th>
                 <th>Väri</th>
             </tr>
@@ -27,16 +28,17 @@
                 <td th:text="${clothing.name}"></td>
                 <td th:text="${clothing.price}"></td>
                 <td th:text="${clothing.manufacturer} ? ${clothing.manufacturer.mname} : '' "></td>
+                <td th:text="${clothing.productType}"></td>
                 <td th:text="${clothing.clothingSize}"></td>
                 <td th:text="${clothing.color}"></td>
 
-                <!--muokkausnäppäin-->
-                <td>
+                <!--muokkausnäppäin ADMIN -käyttäjälle-->
+                <td sec:authorize="hasAuthority ('ADMIN')">
                     <a th:href="@{/editclothing/{id}(id=${clothing.productId})}"> <button
                             type="button">Muokkaa</button></a>
                 </td>
-                <!-- poistonäppäin -->
-                <td>
+                <!-- poistonäppäin ADMIN -käyttäjälle-->
+                <td sec:authorize="hasAuthority ('ADMIN')">
                     <a th:href="@{/deleteproduct/{id}(id=${clothing.productId}, redirect='clothing')}"> <button
                             type="button">Poista</button></a>
                 </td>

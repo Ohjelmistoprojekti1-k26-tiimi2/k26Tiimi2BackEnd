@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
   <meta charset="UTF-8">
@@ -11,6 +12,14 @@
   <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
   <div>
+    <h3>You are signed in as <span sec:authentication="name"></span>.</h3>
+    <form th:action="@{/logout}" method="post">
+      <input type="submit" value="Sign Out">
+    </form>
+    <br>
+  </div>
+
+  <div>
     <!--<a th:href="@{/addproduct}"><button type="button">Lisää tuote </button></a>-->
     <a th:href="@{/manufacturerlist}"><button type="button">Valmistajatiedot</button> </a>
     <br>
@@ -19,19 +28,26 @@
   <div> <!-- ruokatuotteen tiedot -->
     <h4>Ruuat</h4>
     <a th:href="@{/foodlist}"> <button type="button">Lista ruuista</button></a>
-    <a th:href="@{/addfood}"><button type="button">Lisää ruoka</button></a>
+    <div sec:authorize="hasAuthority('ADMIN')">
+      <!--vain ADMIN -käyttäjä voi lisätä uuden tuotteen-->
+      <a th:href="@{/addfood}"><button type="button">Lisää ruoka</button></a>
+    </div>
   </div>
 
   <div> <!-- vaatetuotteen tiedot -->
     <h4>Vaatteet</h4>
     <a th:href="@{/clothinglist}"> <button type="button">Lista vaatteista</button></a>
-    <a th:href="@{/addclothing}"><button type="button">Lisää vaate</button></a>
+    <div sec:authorize="hasAuthority('ADMIN')">
+      <a th:href="@{/addclothing}"><button type="button">Lisää vaate</button></a>
+    </div>
   </div>
 
   <div> <!-- lelutuotteen tiedot -->
     <h4>Lelut</h4>
     <a th:href="@{/toylist}"> <button type="button">Lista leluista</button></a>
-    <a th:href="@{/addtoy}"><button type="button">Lisää lelu</button></a>
+    <div sec:authorize="hasAuthority('ADMIN')">
+      <a th:href="@{/addtoy}"><button type="button">Lisää lelu</button></a>
+    </div>
   </div>
 
 

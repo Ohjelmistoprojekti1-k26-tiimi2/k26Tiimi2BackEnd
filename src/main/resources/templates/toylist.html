@@ -20,22 +20,24 @@
                 <th>Nimi</th>
                 <th>Hinta (€)</th>
                 <th>Valmistaja</th>
-                <th>Tyyppi</th>
+                <th>Tuotetyyppi</th>
+                <th>Lelun tyyppi</th>
                 <th>Lelun koko</th>
             </tr>
             <tr th:each="toy : ${toys}">
                 <td th:text="${toy.name}"></td>
                 <td th:text="${toy.price}"></td>
                 <td th:text="${toy.manufacturer} ? ${toy.manufacturer.mname} : '' "></td>
+                <td th:text="${toy.productType}"></td>
                 <td th:text="${toy.toyType}"></td>
                 <td th:text="${toy.toySize}"></td>
 
                 <!--muokkausnäppäin-->
-                <td>
+                <td sec:authorize="hasAuthority ('ADMIN')">
                     <a th:href="@{/edittoy/{id}(id=${toy.productId})}"> <button type="button">Muokkaa</button></a>
                 </td>
                 <!-- poistonäppäin -->
-                <td>
+                <td sec:authorize="hasAuthority ('ADMIN')">
                     <a th:href="@{/deleteproduct/{id}(id=${toy.productId}, redirect='toy')}"> <button
                             type="button">Poista</button></a>
                 </td>

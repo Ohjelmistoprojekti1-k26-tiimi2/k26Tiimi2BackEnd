@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +13,8 @@
 
     <a th:href="@{/index}"> <button type="button">Etusivulle</button></a>
 
-    <div>
+    <!--vain ADMIN -käyttäjällä on oikeus lisätä uusia valmistajatietoja-->
+    <div sec:authorize="hasAuthority('ADMIN')">
         <h4>Lisää valmistaja</h4>
         <!-- uuden valmistajatiedon lisäys -->
         <form th:action="@{/savemanufacturer}" th:object="${manufacturer}" method="post">
@@ -35,11 +37,13 @@
             </tr>
             <tr th:each="manufacturer : ${manufacturers}">
                 <td th:text="${manufacturer.mname}"></td>
-                <!--muokkaustoiminto-->
-                <td><a th:href="@{/editmanufacturer/{id} (id=${manufacturer.manufacturerId})}"> <button
+                <!--muokkaustoiminto ADMIN -käyttäjälle-->
+                <td sec:authorize="hasAuthority ('ADMIN')"><a
+                        th:href="@{/editmanufacturer/{id} (id=${manufacturer.manufacturerId})}"> <button
                             type="button">Muokkaa</button></a></td>
-                <!--poistotoiminto-->
-                <td><a th:href="@{/deletemanufacturer/{id}(id=${manufacturer.manufacturerId})}"><button
+                <!--poistotoiminto ADMIN -käyttäjälle-->
+                <td sec:authorize="hasAuthority ('ADMIN')"><a
+                        th:href="@{/deletemanufacturer/{id}(id=${manufacturer.manufacturerId})}"><button
                             type="button">Poista</button></a></td>
             </tr>
         </table>
