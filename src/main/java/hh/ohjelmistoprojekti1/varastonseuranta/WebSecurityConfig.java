@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
+import org.springframework.http.HttpMethod;
 import hh.ohjelmistoprojekti1.varastonseuranta.web.UserDetailServiceImpl;
 
 @Configuration
@@ -33,6 +33,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(
                 authorize -> authorize
+                    .requestMatchers(HttpMethod.GET,"/api/**").permitAll() // frontti saa hakea dataa
+                    .requestMatchers("/api/**").authenticated()            // muut vaatii loginin
                         .anyRequest()
                         .authenticated())
                 .formLogin(formlogin -> formlogin // springin oletus kirjautumissivu
