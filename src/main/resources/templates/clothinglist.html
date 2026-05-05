@@ -27,7 +27,7 @@
             <tr th:each="clothing : ${clothes}">
                 <td th:text="${clothing.name}"></td>
                 <td th:text="${clothing.price}"></td>
-                <td th:text="${clothing.manufacturer} ? ${clothing.manufacturer.mname} : '' "></td>
+                <td th:text="${clothing.manufacturer} != null ? ${clothing.manufacturer.mname} : '' "></td>
                 <td th:text="${clothing.productType}"></td>
                 <td th:text="${clothing.clothingSize}"></td>
                 <td th:text="${clothing.color}"></td>
