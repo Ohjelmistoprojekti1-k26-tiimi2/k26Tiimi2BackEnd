@@ -19,10 +19,12 @@
         <input type="hidden" th:field="*{productId}" />
 
         <div>
+            <label for="">Ruuan nimi: </label>
             <input type="text" th:field="*{name}" placeholder="Nimi">
         </div>
 
         <div>
+            <label for="">Ruuan tyyppi: </label>
             <input type="text" th:field="*{foodType}" placeholder="Ruuan tyyppi">
         </div>
 
@@ -35,10 +37,12 @@
         </div>
 
         <div>
+            <label for="">Hinta: </label>
             <input type="text" th:field="*{price}" placeholder="Hinta">
         </div>
 
         <div class="col">
+            <label for="">Valmistaja: </label>
             <select id="manufacturerlist" th:field="*{manufacturer}" class="form-select">
                 <option value="">Valitse valmistaja</option>
                 <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.manufacturerId}"

@@ -19,30 +19,36 @@
         <input type="hidden" th:field="*{productId}" />
 
         <div>
+            <label for="">Lelun nimi: </label>
             <input type="text" th:field="*{name}" placeholder="Nimi">
         </div>
 
         <div>
-            <input type="text" th:field="*{toyType}" placeholder="Tyyppi">
-        </div>
-
-        <div>
-            <select th:field="*{toySize}">
-                <option value="">Valitse koko</option>
-                <option th:each="size : ${sizes}" th:value="${size}" th:text="${size}"></option>
-            </select>
-        </div>
-
-        <div>
+            <label for="">Hinta: </label>
             <input type="text" th:field="*{price}" placeholder="Hinta">
         </div>
 
         <div class="col">
+            <label for="">Valmistaja: </label>
+
             <select id="manufacturerlist" th:field="*{manufacturer}" class="form-select">
                 <option value="">Valitse valmistaja</option>
                 <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.manufacturerId}"
                     th:text="${manufacturer.mname}">
                 </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="">Lelun tyyppi: </label>
+            <input type="text" th:field="*{toyType}" placeholder="Tyyppi">
+        </div>
+
+        <div>
+            <label for="">Lelun koko: </label>
+            <select th:field="*{toySize}">
+                <option value="">Valitse koko</option>
+                <option th:each="size : ${sizes}" th:value="${size}" th:text="${size}"></option>
             </select>
         </div>
 

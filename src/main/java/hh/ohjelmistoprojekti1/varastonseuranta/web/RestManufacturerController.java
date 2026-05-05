@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,7 @@ import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
 
 
 @RestController
-@RequestMapping("/manufacturers")
+@RequestMapping("/api/manufacturers")
 public class RestManufacturerController {
 
     private final ManufacturerRepository manufacturerRepository;
@@ -39,9 +40,9 @@ public class RestManufacturerController {
     
     // Lisää uusi valmistaja
     @PostMapping
-    public Manufacturer newManufacturer(Manufacturer newManufacturer) {
-        return manufacturerRepository.save(newManufacturer);
-    }
+    public Manufacturer newManufacturer(@RequestBody Manufacturer newManufacturer) {
+    return manufacturerRepository.save(newManufacturer);
+    }   
 
     // Poista valmistaja
     @DeleteMapping("/{id}")
@@ -51,13 +52,9 @@ public class RestManufacturerController {
 
     // Päivitä valmistaja
     @PutMapping("/{id}")
-    public Manufacturer editManufacturer(Manufacturer editedManufacturer,
-                                         @PathVariable("id") Long manufacturerId) {
-       
-       
-      // ASETETAAN OIKEA ID, JOTTA PÄIVITETÄÄN OIKEA RIVI EIKÄ LUODA UUTTA
-      editedManufacturer.setManufacturerId(manufacturerId);
-     // TALLENNETAAN PÄIVITETTY VALMISTAJA TIETOKANTAAN
-      return manufacturerRepository.save(editedManufacturer);
+    public Manufacturer editManufacturer(@RequestBody Manufacturer editedManufacturer,
+                                     @PathVariable("id") Long manufacturerId) {
+    editedManufacturer.setManufacturerId(manufacturerId);
+    return manufacturerRepository.save(editedManufacturer);
     }
 }
