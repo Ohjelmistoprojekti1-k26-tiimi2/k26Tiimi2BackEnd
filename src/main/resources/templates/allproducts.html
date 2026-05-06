@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuotelistaus</title>
+</head>
+
+<body>
+    <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
+
+    <div>
+        <a th:href="@{/index}"><button type="button">Etusivulle</button> </a>
+        <br>
+    </div>
+
+    <div> <!-- kaikki tuotteet -->
+        <h4>Kaikki tuotteet</h4>
+        <div>
+            <table>
+                <tr>
+                    <th>Nimi</th>
+                    <th>Hinta (€)</th>
+                    <th>Valmistaja</th>
+                    <th>Tuotetyyppi</th>
+                </tr>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.manufacturer} != null ? ${product.manufacturer.mname} : '' "></td>
+                    <td th:text="${product.productType}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
