@@ -10,7 +10,10 @@
 <body>
   <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
-  <a th:href="@{/clothinglist}"><button type="button"> Peruuta </button></a>
+  <div>
+    <a th:href="@{/clothinglist}"><button type="button"> Peruuta </button></a>
+    <a th:href="@{/index}"> <button type="button"> Etusivulle </button></a>
+  </div>
 
   <h4>Muokkaa tuotetta</h4>
 
@@ -18,21 +21,13 @@
 
     <input type="hidden" th:field="*{productId}" />
 
+    <!-- Vaatteen nimi -->
     <div>
       <label for="">Vaatteen nimi: </label>
       <input type="text" th:field="*{name}" placeholder="Vaatteen nimi">
     </div>
 
-    <div>
-      <label for="">Väri: </label>
-      <input type="text" th:field="*{color}" placeholder="Väri">
-    </div>
-
-    <div>
-      <label for="">Hinta: </label>
-      <input type="text" th:field="*{price}" placeholder="Hinta">
-    </div>
-
+    <!-- Vaatteen koko -->
     <div>
       <label for="">Koko: </label>
       <select th:field="*{clothingSize}">
@@ -41,6 +36,19 @@
       </select>
     </div>
 
+    <!-- Vaatteen väri -->
+    <div>
+      <label for="">Väri: </label>
+      <input type="text" th:field="*{color}" placeholder="Väri">
+    </div>
+
+    <!-- Vaatteen hinta -->
+    <div>
+      <label for="">Hinta: </label>
+      <input type="text" th:field="*{price}" placeholder="Hinta">
+    </div>
+
+    <!-- Vaatteen valmistaja -->
     <div class="col">
       <label for="">Valmistaja: </label>
       <select id="manufacturerlist" th:field="*{manufacturer}" class="form-select">
