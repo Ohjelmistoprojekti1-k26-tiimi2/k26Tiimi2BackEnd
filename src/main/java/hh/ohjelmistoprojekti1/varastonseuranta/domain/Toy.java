@@ -1,5 +1,6 @@
 package hh.ohjelmistoprojekti1.varastonseuranta.domain;
 
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.Size;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -7,8 +8,8 @@ import jakarta.persistence.Enumerated;
 @Entity
 public class Toy extends Product {
 
-  private String toyType; // vinkulelu, purulelu, aktivointilelu, heittolelu, älypelit, vetolelut,
-                          // vesilelut, pallot, pehmolelut.
+  private String toyType; // Vinkulelu, Purulelu, Aktivointilelu, Heittolelu, Älypelit, Vetolelut,
+                          // Vesilelut, Pallot, Pehmolelut.
 
   @Enumerated(EnumType.STRING)
   private Size toySize; // lelun koko - ei koiran koko
