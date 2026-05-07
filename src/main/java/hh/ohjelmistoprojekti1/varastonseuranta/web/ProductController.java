@@ -2,15 +2,17 @@ package hh.ohjelmistoprojekti1.varastonseuranta.web;
 
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Clothing;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ClothingRepository;
-import hh.ohjelmistoprojekti1.varastonseuranta.domain.DogAge;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Food;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.FoodRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Product;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
-import hh.ohjelmistoprojekti1.varastonseuranta.domain.Size;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.Toy;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ToyRepository;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.DogAge;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.FoodType;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.Size;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.ToyType;
 import jakarta.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -83,6 +85,7 @@ public class ProductController {
   @GetMapping("/addtoy")
   public String addToy(Model model) {
     model.addAttribute("toy", new Toy());
+    model.addAttribute("toytypes", ToyType.values());
     model.addAttribute("toySizes", Size.values());
     model.addAttribute("manufacturers", manufacturerRepository.findAll());
     return "addtoy"; // addtoy.html
@@ -137,6 +140,7 @@ public class ProductController {
   public String addFood(Model model) {
     model.addAttribute("food", new Food());
     model.addAttribute("manufacturers", manufacturerRepository.findAll());
+    model.addAttribute("foodtype", FoodType.values());
     model.addAttribute("dogage", DogAge.values());
     return "addfood"; // addfood.html
   }
