@@ -10,7 +10,10 @@
 <body>
     <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
-    <a th:href="@{/foodlist}"><button type="button"> Peruuta </button></a>
+    <div>
+        <a th:href="@{/foodlist}"> <button type="button"> Peruuta </button></a>
+        <a th:href="@{/index}"> <button type="button"> Etusivulle </button></a>
+    </div>
 
     <h4>Muokkaa tuotetta</h4>
 
@@ -18,16 +21,22 @@
 
         <input type="hidden" th:field="*{productId}" />
 
+        <!-- Ruoan nimi -->
         <div>
-            <label for="">Ruuan nimi: </label>
+            <label for=""> Ruoan nimi: </label>
             <input type="text" th:field="*{name}" placeholder="Nimi">
         </div>
 
+        <!-- Ruoan tyyppi -->
         <div>
-            <label for="">Ruuan tyyppi: </label>
-            <input type="text" th:field="*{foodType}" placeholder="Ruuan tyyppi">
+            <label for=""> Ruoan tyyppi: </label>
+            <select th:field="*{foodType}">
+                <option value="">Valitse ruoan tyyppi</option>
+                <option th:each="ftype : ${foodtype}" th:value="${ftype}" th:text="${ftype}"></option>
+            </select>
         </div>
 
+        <!-- Koiran ikä -->
         <div>
             <label for="">Koiran ikä: </label>
             <select th:field="*{dogAge}">
@@ -36,11 +45,13 @@
             </select>
         </div>
 
+        <!-- Ruoan hinta -->
         <div>
             <label for="">Hinta: </label>
             <input type="text" th:field="*{price}" placeholder="Hinta">
         </div>
 
+        <!-- Ruoan valmistaja -->
         <div class="col">
             <label for="">Valmistaja: </label>
             <select id="manufacturerlist" th:field="*{manufacturer}" class="form-select">
