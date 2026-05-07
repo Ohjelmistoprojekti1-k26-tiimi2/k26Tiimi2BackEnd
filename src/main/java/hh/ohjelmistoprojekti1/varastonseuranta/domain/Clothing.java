@@ -1,5 +1,6 @@
 package hh.ohjelmistoprojekti1.varastonseuranta.domain;
 
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.Size;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
