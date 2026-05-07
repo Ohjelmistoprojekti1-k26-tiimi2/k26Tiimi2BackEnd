@@ -10,7 +10,10 @@
 <body>
     <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
-    <a th:href="@{/toylist}"><button type="button"> Peruuta </button></a>
+    <div>
+        <a th:href="@{/toylist}"><button type="button"> Peruuta </button></a>
+        <a th:href="@{/index}"> <button type="button"> Etusivulle </button></a>
+    </div>
 
     <h4>Muokkaa tuotetta</h4>
 
@@ -18,16 +21,37 @@
 
         <input type="hidden" th:field="*{productId}" />
 
+        <!-- Lelun nimi -->
         <div>
             <label for="">Lelun nimi: </label>
             <input type="text" th:field="*{name}" placeholder="Nimi">
         </div>
 
+        <!-- Lelun tyyppi -->
+        <div>
+            <label for="">Lelun tyyppi: </label>
+            <select th:field="*{toyType}">
+                <option value="">Valitsen lelun tyyppi</option>
+                <option th:each="ttype : ${toytypes}" th:value="${ttype}" th:text="${ttype}"></option>
+            </select>
+        </div>
+
+        <!-- Lelun koko -->
+        <div>
+            <label for="">Lelun koko: </label>
+            <select th:field="*{toySize}">
+                <option value="">Valitse koko</option>
+                <option th:each="size : ${sizes}" th:value="${size}" th:text="${size}"></option>
+            </select>
+        </div>
+
+        <!-- Lelun hinta -->
         <div>
             <label for="">Hinta: </label>
             <input type="text" th:field="*{price}" placeholder="Hinta">
         </div>
 
+        <!-- Lelun valmistaja -->
         <div class="col">
             <label for="">Valmistaja: </label>
 
@@ -36,19 +60,6 @@
                 <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.manufacturerId}"
                     th:text="${manufacturer.mname}">
                 </option>
-            </select>
-        </div>
-
-        <div>
-            <label for="">Lelun tyyppi: </label>
-            <input type="text" th:field="*{toyType}" placeholder="Tyyppi">
-        </div>
-
-        <div>
-            <label for="">Lelun koko: </label>
-            <select th:field="*{toySize}">
-                <option value="">Valitse koko</option>
-                <option th:each="size : ${sizes}" th:value="${size}" th:text="${size}"></option>
             </select>
         </div>
 
