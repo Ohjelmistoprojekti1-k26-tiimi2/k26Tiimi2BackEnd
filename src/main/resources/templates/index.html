@@ -24,39 +24,6 @@
 <body>
   <h1 class="header"> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
-  <div class="container">
-
-    <div class="col-md-4 card">
-      <a th:href="@{/manufacturerlist}"><button class="btn" type="button">Valmistajatiedot</button> </a>
-    </div>
-
-    <div class="row">
-      <div class="col-md-4 card">
-        <!-- ruokatuotteen tiedot -->
-        <h4>Ruuat</h4>
-        <a th:href="@{/foodlist}"> <button class="btn" type="button">Lista ruuista</button></a>
-        <a th:href="@{/addfood}"><button class="btn" type="button">Lisää ruoka</button></a>
-
-      </div>
-
-      <div class="col-md-4 card">
-        <!-- vaatetuotteen tiedot -->
-        <h4>Vaatteet</h4>
-        <a th:href="@{/clothinglist}"> <button class="btn" type="button">Lista vaatteista</button></a>
-        <a th:href="@{/addclothing}"><button class="btn" type="button">Lisää vaate</button></a>
-
-      </div>
-
-      <div class="col-md-4 card">
-        <!-- lelutuotteen tiedot -->
-        <h4>Lelut</h4>
-        <a th:href="@{/toylist}"> <button class="btn" type="button">Lista leluista</button></a>
-        <a th:href="@{/addtoy}"><button class="btn" type="button">Lisää lelu</button></a>
-
-      </div>
-    </div>
-  </div>
-
   <div>
     <h3>You are signed in as <span sec:authentication="name"></span>.</h3>
     <form th:action="@{/logout}" method="post">
@@ -65,34 +32,41 @@
     <br>
   </div>
 
-  <div>
-    <!--<a th:href="@{/addproduct}"><button type="button">Lisää tuote </button></a>-->
-    <a th:href="@{/manufacturerlist}"><button type="button">Valmistajatiedot</button> </a>
-    <br>
-  </div>
+  <div class="container">
 
-  <div> <!-- ruokatuotteen tiedot -->
-    <h4>Ruuat</h4>
-    <a th:href="@{/foodlist}"> <button type="button">Lista ruuista</button></a>
-    <div sec:authorize="hasAuthority('ADMIN')">
-      <!--vain ADMIN -käyttäjä voi lisätä uuden tuotteen-->
-      <a th:href="@{/addfood}"><button type="button">Lisää ruoka</button></a>
+    <div class="col-md-4">
+      <a th:href="@{/manufacturerlist}"><button class="btn" type="button">Valmistajatiedot</button> </a>
     </div>
-  </div>
 
-  <div> <!-- vaatetuotteen tiedot -->
-    <h4>Vaatteet</h4>
-    <a th:href="@{/clothinglist}"> <button type="button">Lista vaatteista</button></a>
-    <div sec:authorize="hasAuthority('ADMIN')">
-      <a th:href="@{/addclothing}"><button type="button">Lisää vaate</button></a>
-    </div>
-  </div>
+    <div class="row">
+      <div class="col-md-4 card">
+        <!-- ruokatuotteen tiedot -->
+        <h4>Ruuat</h4>
+        <a th:href="@{/foodlist}"> <button class="btn" type="button">Lista ruuista</button></a>
+        <div sec:authorize="hasAuthority('ADMIN')">
+          <!--vain ADMIN -käyttäjä voi lisätä uuden tuotteen-->
+          <a th:href="@{/addfood}"><button class="btn" type="button">Lisää ruoka</button></a>
+        </div>
+      </div>
 
-  <div> <!-- lelutuotteen tiedot -->
-    <h4>Lelut</h4>
-    <a th:href="@{/toylist}"> <button type="button">Lista leluista</button></a>
-    <div sec:authorize="hasAuthority('ADMIN')">
-      <a th:href="@{/addtoy}"><button type="button">Lisää lelu</button></a>
+      <div class="col-md-4 card">
+        <!-- vaatetuotteen tiedot -->
+        <h4>Vaatteet</h4>
+        <a th:href="@{/clothinglist}"> <button class="btn" type="button">Lista vaatteista</button></a>
+        <div sec:authorize="hasAuthority('ADMIN')">
+          <a th:href="@{/addclothing}"><button class="btn" type="button">Lisää vaate</button></a>
+        </div>
+      </div>
+
+      <div class="col-md-4 card">
+        <!-- lelutuotteen tiedot -->
+        <h4>Lelut</h4>
+        <a th:href="@{/toylist}"> <button class="btn" type="button">Lista leluista</button></a>
+        <div sec:authorize="hasAuthority('ADMIN')">
+          <a th:href="@{/addtoy}"><button class="btn" type="button">Lisää lelu</button></a>
+        </div>
+      </div>
+
     </div>
   </div>
 
