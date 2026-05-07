@@ -12,45 +12,52 @@
 
     <div>
         <a th:href="@{/index}"> <button type="button"> Peruuta </button></a>
-        <br>
     </div>
 
     <h4>Lisää ruoka</h4>
 
-    <!--formi ruuan lisäämiseksi-->
+    <!-- formi ruuan lisäämiseksi -->
     <form method="post" action="#" th:action="@{/savefood}" th:object="${food}">
 
+        <!-- Ruoan nimi -->
         <div>
             <label for="">Ruuan nimi: </label>
             <input type="text" th:field="*{name}" placeholder="Tuotteen nimi">
             <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></div>
         </div>
 
+        <!-- Ruoan tyyppi -->
+        <div>
+            <label for=""> Ruoan tyyppi: </label>
+            <select th:field="*{foodType}">
+                <option value="">Valitse ruoan tyyppi</option>
+                <option th:each="ftype : ${foodtype}" th:value="${ftype}" th:text="${ftype}"></option>
+            </select>
+        </div>
+
+        <!-- Koiran ikä -->
+        <div>
+            <label for="">Koiran ikä: </label>
+            <select th:field="*{dogAge}">
+                <option value="">Valitse koiran ikä</option>
+                <option th:each="age : ${dogage}" th:value="${age}" th:text="${age}"></option>
+            </select>
+        </div>
+
+        <!-- Ruoan hinta -->
         <div>
             <label for="">Hinta: </label>
             <input type="text" th:field="*{price}" placeholder="Hinta">
             <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
         </div>
 
+        <!-- Ruoan valmistaja -->
         <div>
             <label for="">Valmistaja: </label>
             <select th:field="*{manufacturer}">
                 <option value="">Valitse valmistaja</option>
                 <option th:each="m : ${manufacturers}" th:value="${m.manufacturerId}" th:text="${m.mname}">
                 </option>
-            </select>
-        </div>
-
-        <div>
-            <label for="">Ruuan tyyppi: </label>
-            <input type="text" th:field="*{foodType}" placeholder="Ruuan tyyppi">
-        </div>
-
-        <div>
-            <label for="">Koiran ikä: </label>
-            <select th:field="*{dogAge}">
-                <option value="">Valitse koiran ikä</option>
-                <option th:each="age : ${dogage}" th:value="${age}" th:text="${age}"></option>
             </select>
         </div>
 
