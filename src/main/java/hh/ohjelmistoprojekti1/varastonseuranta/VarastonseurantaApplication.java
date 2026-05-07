@@ -7,17 +7,17 @@ import org.springframework.context.annotation.Bean;
 
 // import hh.ohjelmistoprojekti1.varastonseuranta.domain.Clothing;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ClothingRepository;
-// import hh.ohjelmistoprojekti1.varastonseuranta.domain.DogAge;
 // import hh.ohjelmistoprojekti1.varastonseuranta.domain.Food;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.FoodRepository;
 // import hh.ohjelmistoprojekti1.varastonseuranta.domain.Manufacturer;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
-// import hh.ohjelmistoprojekti1.varastonseuranta.domain.Size;
 // import hh.ohjelmistoprojekti1.varastonseuranta.domain.Toy;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ToyRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.User;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.UserRepository;
+// import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.DogAge;
+// import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.Size;
 
 @SpringBootApplication
 public class VarastonseurantaApplication {
