@@ -16,37 +16,23 @@
 <body>
     <h1>VARASTONSEURANTAJÄRJESTELMÄ</h1>
 
-
     <div>
         <a th:href="@{/index}"> <button type="button"> Peruuta </button></a>
-        <br>
     </div>
 
     <h4>Lisää vaate</h4>
 
-    <!--formi vaatteemn lisäämiseksi-->
+    <!--formi vaatteen lisäämiseksi-->
     <form method="post" action="#" th:action="@{/saveclothing}" th:object="${clothing}">
+
+        <!-- Vaatteen nimi -->
         <div>
             <label for="">Vaatteen nimi: </label>
             <input type="text" th:field="*{name}" placeholder="Tuotteen nimi">
             <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></div>
         </div>
 
-        <div>
-            <label for="">Hinta: </label>
-            <input type="text" th:field="*{price}" placeholder="Hinta">
-            <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
-        </div>
-
-        <div>
-            <label for="">Valmistaja: </label>
-            <select th:field="*{manufacturer}">
-                <option value="">Valitse valmistaja</option>
-                <option th:each="m : ${manufacturers}" th:value="${m.manufacturerId}" th:text="${m.mname}">
-                </option>
-            </select>
-        </div>
-
+        <!-- Vaatteen koko -->
         <div>
             <label for="">Vaatteen koko: </label>
             <select th:field="*{clothingSize}">
@@ -55,9 +41,27 @@
             </select>
         </div>
 
+        <!-- Väri -->
         <div>
             <label for="">Väri: </label>
             <input type="text" th:field="*{color}" placeholder="Väri">
+        </div>
+
+        <!-- Hinta -->
+        <div>
+            <label for="">Hinta: </label>
+            <input type="text" th:field="*{price}" placeholder="Hinta">
+            <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+        </div>
+
+        <!-- Valmistaja -->
+        <div>
+            <label for="">Valmistaja: </label>
+            <select th:field="*{manufacturer}">
+                <option value="">Valitse valmistaja</option>
+                <option th:each="m : ${manufacturers}" th:value="${m.manufacturerId}" th:text="${m.mname}">
+                </option>
+            </select>
         </div>
 
         <button type="submit">Lisää tuote</button>
