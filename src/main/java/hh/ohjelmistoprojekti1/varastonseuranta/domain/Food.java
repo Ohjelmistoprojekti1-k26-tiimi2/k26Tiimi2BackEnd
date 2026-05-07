@@ -1,5 +1,7 @@
 package hh.ohjelmistoprojekti1.varastonseuranta.domain;
 
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.DogAge;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.FoodType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -7,10 +9,11 @@ import jakarta.persistence.Enumerated;
 @Entity
 public class Food extends Product {
 
-  private String foodType; // kuivaruoka, märkäruoka, raakaruoka, herkätruoat.
+  @Enumerated(EnumType.STRING)
+  private FoodType foodType; // Kuivaruoka, Märkäruoka, Raakaruoka, Herkätruoat.
 
   @Enumerated(EnumType.STRING)
-  private DogAge dogAge; // koiran ikä: pentu, adult, seniori
+  private DogAge dogAge; // koiran ikä: Pentu, Aikuinen, Vanhus
 
   // CONSTRUCTORS
   public Food() {
@@ -18,14 +21,14 @@ public class Food extends Product {
     super();
   }
 
-  public Food(String name, double price, Manufacturer manufacturer, String foodType, DogAge age) {
+  public Food(String name, double price, Manufacturer manufacturer, FoodType foodType, DogAge age) {
     super(name, price, manufacturer);
     this.foodType = foodType;
     this.dogAge = age;
   }
 
   // SETTERS
-  public void setFoodType(String foodType) {
+  public void setFoodType(FoodType foodType) {
     this.foodType = foodType;
   }
 
@@ -34,7 +37,7 @@ public class Food extends Product {
   }
 
   // GETTERS
-  public String getFoodType() {
+  public FoodType getFoodType() {
     return foodType;
   }
 
