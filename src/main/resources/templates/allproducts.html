@@ -25,12 +25,33 @@
                     <th>Hinta (€)</th>
                     <th>Valmistaja</th>
                     <th>Tuotetyyppi</th>
+                    <!--ruokatuotteiden tiedot-->
+                    <th>Ruuan tyyppi</th>
+                    <th>Koiran ikä</th>
+                    <!--lelutuotteiden tiedot-->
+                    <th>Lelutyyppi</th>
+                    <th>Lelun koko</th>
+                    <!--vaatetuotteiden tiedot-->
+                    <th>Vaatteen koko</th>
+                    <th>Vaatteen väri</th>
                 </tr>
                 <tr th:each="product : ${products}">
+                    <!-- yhteiset saraketiedot -->
                     <td th:text="${product.name}"></td>
                     <td th:text="${product.price}"></td>
                     <td th:text="${product.manufacturer} != null ? ${product.manufacturer.mname} : '' "></td>
                     <td th:text="${product.productType}"></td>
+                    <!--ruokatuotteiden tiedot-->
+                    <td th:text="${product.productType == 'Ruoka' ? product.foodType : '-'}"></td>
+                    <td th:text="${product.productType == 'Ruoka' ? product.dogAge : '-'}"></td>
+                    <!--lelutuotteiden tiedot-->
+                    <td th:text="${product.productType == 'Lelu' ? product.toyType : '-'}"></td>
+                    <td th:text="${product.productType == 'Lelu' ? product.toySize : '-'}"></td>
+                    <!--vaatetuotteiden tiedot-->
+                    <td th:text="${product.productType == 'Vaate' ? product.clothingSize : '-'}"></td>
+                    <td th:text="${product.productType == 'Vaate' ? product.color : '-'}"></td>
+
+
                 </tr>
             </table>
         </div>
