@@ -39,12 +39,19 @@ public class ProductController {
     this.toyRepository = toyRepository;
   }
 
-  // etusivu / lista tuotteista
+  // etusivu / landing page
   @GetMapping({ "/", "/index" })
   public String main(Model model) {
     // haetaan kaikki tuotteet
     model.addAttribute("products", productRepository.findAll());
     return "index"; // index.html
+  }
+
+  // listaus kaikista tuotteista
+  @GetMapping("/allproducts")
+  public String getProducts(Model model) {
+    model.addAttribute("products", productRepository.findAll());
+    return "allproducts"; // allproducts.html
   }
 
   // uuden tuotteen lisäys (lomake)
