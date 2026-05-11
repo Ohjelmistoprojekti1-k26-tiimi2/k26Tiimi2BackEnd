@@ -6,68 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lisää vaate</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Cabin+Sketch:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Oma CSS -->
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
 </head>
 
 <body>
-    <h1>VARASTONSEURANTAJÄRJESTELMÄ</h1>
+    <!-- Header -->
+    <div class="header">
+        <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
-    <div>
-        <a th:href="@{/index}"> <button type="button"> Peruuta </button></a>
+        <div class="header-user">
+            <h3>Olet kirjautunut <span sec:authentication="name" class="username-color"></span> käyttäjänä.</h3>
+            <form th:action="@{/logout}" method="post">
+                <input class="btn btn-sm" type="submit" value="Kirjaudu Ulos">
+            </form>
+        </div>
     </div>
 
-    <h4>Lisää vaate</h4>
+    <!-- Formi -->
 
-    <!--formi vaatteen lisäämiseksi-->
-    <form method="post" action="#" th:action="@{/saveclothing}" th:object="${clothing}">
-
-        <!-- Vaatteen nimi -->
-        <div>
-            <label for="">Vaatteen nimi: </label>
-            <input type="text" th:field="*{name}" placeholder="Tuotteen nimi">
-            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></div>
+    <div class="form-container">
+        <div class="header-form">
+            <h4>Lisää vaate</h4>
+            <a th:href="@{/index}"> <button class="btn btn-sm" type="button"> Etusivulle </button></a>
         </div>
 
-        <!-- Vaatteen koko -->
-        <div>
-            <label for="">Vaatteen koko: </label>
-            <select th:field="*{clothingSize}">
-                <option value="">Valitse koko</option>
-                <option th:each="size : ${sizes}" th:value="${size}" th:text="${size}"></option>
-            </select>
-        </div>
+        <!--formi vaatteen lisäämiseksi-->
+        <form method="post" action="#" th:action="@{/saveclothing}" th:object="${clothing}">
 
-        <!-- Väri -->
-        <div>
-            <label for="">Väri: </label>
-            <input type="text" th:field="*{color}" placeholder="Väri">
-        </div>
+            <!-- Vaatteen nimi -->
+            <div class="form-group">
+                <label for="">Vaatteen nimi: </label>
+                <input class="form-control input-add" type="text" th:field="*{name}" placeholder="Tuotteen nimi">
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></div>
+            </div>
 
-        <!-- Hinta -->
-        <div>
-            <label for="">Hinta: </label>
-            <input type="text" th:field="*{price}" placeholder="Hinta">
-            <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
-        </div>
+            <!-- Hinta -->
+            <div class="form-group">
+                <label for="">Hinta: </label>
+                <input class="form-control input-add" type="text" th:field="*{price}" placeholder="Hinta">
+                <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+            </div>
 
-        <!-- Valmistaja -->
-        <div>
-            <label for="">Valmistaja: </label>
-            <select th:field="*{manufacturer}">
-                <option value="">Valitse valmistaja</option>
-                <option th:each="m : ${manufacturers}" th:value="${m.manufacturerId}" th:text="${m.mname}">
-                </option>
-            </select>
-        </div>
+            <!-- Valmistaja -->
+            <div class="form-group">
+                <label for="">Valmistaja: </label>
+                <select th:field="*{manufacturer}" class="form-select form-control select-add">
+                    <option value="">Valitse valmistaja</option>
+                    <option th:each="m : ${manufacturers}" th:value="${m.manufacturerId}" th:text="${m.mname}">
+                    </option>
+                </select>
+            </div>
 
-        <button type="submit">Lisää tuote</button>
+            <!-- Vaatteen koko -->
+            <div class="form-group">
+                <label for="">Vaatteen koko: </label>
+                <select th:field="*{clothingSize}" class="form-select form-control select-add">
+                    <option value="">Valitse koko</option>
+                    <option th:each="size : ${sizes}" th:value="${size}" th:text="${size}"></option>
+                </select>
+            </div>
 
-    </form>
+            <!-- Väri -->
+            <div class="form-group">
+                <label for="">Väri: </label>
+                <input class="form-control input-add" type="text" th:field="*{color}" placeholder="Väri">
+            </div>
 
+            <!-- Tallenna & Peruuta -->
+            <button class="btn btn-sm" type="submit">Lisää vaate</button>
+            <a th:href="@{/index}"> <button class="btn btn-sm" type="button"> Peruuta </button></a>
+
+        </form>
+    </div>
 </body>
 
 </html>
