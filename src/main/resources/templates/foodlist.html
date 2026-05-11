@@ -5,44 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista ruuista</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Cabin+Sketch:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Oma CSS -->
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
 </head>
 
 <body>
-    <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
+    <!-- Header -->
+    <div class="header">
+        <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
-    <a th:href="@{/index}"><button type="button"> Etusivulle </button></a>
+        <div class="header-user">
+            <h3>Olet kirjautunut <span sec:authentication="name" class="username-color"></span> käyttäjänä.</h3>
+            <form th:action="@{/logout}" method="post">
+                <input class="btn btn-sm" type="submit" value="Kirjaudu Ulos">
+            </form>
+        </div>
+    </div>
 
-    <h3>Ruuat</h3>
+    <!-- Listaus ruoista-->
 
-    <div>
-        <table>
+    <div class="container">
+        <div class="header-list">
+            <div class="back-button">
+                <a th:href="@{/index}">
+                    <button class="btn btn-sm" type="button"> Etusivulle </button>
+                </a>
+            </div>
+
+            <h3>Ruoat</h3>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
             <tr>
                 <th>Nimi</th>
-                <th>Tuotetyyppi</th>
-                <th>Ruuan tyyppi</th>
-                <th>Koiran ikä</th>
                 <th>Hinta (€)</th>
                 <th>Valmistaja</th>
+                <!-- <th>Tuotetyyppi</th> -->
+                <th>Ruoan tyyppi</th>
+                <th>Koiran ikä</th>
+                <th sec:authorize="hasAuthority ('ADMIN')"></th>
+                <th sec:authorize="hasAuthority ('ADMIN')"></th>
 
             </tr>
             <tr th:each="food : ${foods}">
                 <td th:text="${food.name}"></td>
-                <td th:text="${food.productType}"></td>
-                <td th:text="${food.foodType}"></td>
-                <td th:text="${food.dogAge}"></td>
                 <td th:text="${food.price}"></td>
                 <td th:text="${food.manufacturer} ? ${food.manufacturer.mname} : '' "></td>
+                <!-- <td th:text="${food.productType}"></td> -->
+                <td th:text="${food.foodType}"></td>
+                <td th:text="${food.dogAge}"></td>
 
                 <!--muokkausnäppäin ADMIN -käyttäjälle-->
                 <td sec:authorize="hasAuthority ('ADMIN')">
-                    <a th:href="@{/editfood/{id}(id=${food.productId})}"> <button type="button">Muokkaa</button></a>
+                    <a th:href="@{/editfood/{id}(id=${food.productId})}">
+                        <button class="btn btn-sm" type="button">Muokkaa</button>
+                    </a>
                 </td>
+
                 <!-- poistonäppäin ADMIN -käyttäjälle -->
                 <td sec:authorize="hasAuthority ('ADMIN')">
                     <a th:href="@{/deleteproduct/{id}(id=${food.productId}, redirect='food')}"
                         th:attr="data-name=${food.name}"
                         onclick="return confirm('Poistetaanko ruoka: ' + this.dataset.name + '?');">
-                        <button type="button">Poista</button>
+                        <button class="btn btn-sm" type="button">Poista</button>
                     </a>
                 </td>
             </tr>
