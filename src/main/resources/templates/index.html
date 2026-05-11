@@ -19,53 +19,58 @@
 
   <!-- Oma CSS -->
   <link rel="stylesheet" th:href="@{/styles.css}">
+
 </head>
 
 <body>
-  <h1 class="header"> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
-  <div>
-    <h3>You are signed in as <span sec:authentication="name"></span>.</h3>
-    <form th:action="@{/logout}" method="post">
-      <input type="submit" value="Sign Out">
-    </form>
-    <br>
+  <!-- Header -->
+  <div class="header">
+    <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
+
+    <div class="header-user">
+      <h3>Olet kirjautunut <span sec:authentication="name" class="username-color"></span> käyttäjänä.</h3>
+      <form th:action="@{/logout}" method="post">
+        <input class="btn btn-sm" type="submit" value="Kirjaudu Ulos">
+      </form>
+    </div>
   </div>
 
+  <!-- Kaikki tuotteet + Valmistajat -->
   <div class="container">
-    <div class="col-md-4">
-      <a th:href="@{/allproducts}"><button type="button">Kaikki tuotteet</button></a>
-      <a th:href="@{/manufacturerlist}"><button type="button">Valmistajatiedot</button> </a>
-      <br>
+    <div class="div-margin">
+      <a th:href="@{/allproducts}"><button class="btn btn-sm" type="button">Kaikki tuotteet</button></a>
+      <a th:href="@{/manufacturerlist}"><button class="btn btn-sm" type="button">Valmistajatiedot</button> </a>
     </div>
 
+    <!-- Sarakkeet: eri tuotteiden sivuille -->
     <div class="row">
-      <div class="col-md-4 card">
+      <div class="col-md-4 div-margin">
         <!-- ruokatuotteen tiedot -->
-        <h4>Ruuat</h4>
-        <a th:href="@{/foodlist}"> <button class="btn" type="button">Lista ruuista</button></a>
-        <div sec:authorize="hasAuthority('ADMIN')">
+        <h4>Ruoat</h4>
+        <a th:href="@{/foodlist}"> <button class="btn btn-sm" type="button">Lista ruoista</button></a>
+        <span sec:authorize="hasAuthority('ADMIN')">
           <!--vain ADMIN -käyttäjä voi lisätä uuden tuotteen-->
-          <a th:href="@{/addfood}"><button class="btn" type="button">Lisää ruoka</button></a>
-        </div>
+          <a th:href="@{/addfood}"><button class="btn btn-sm" type="button">Lisää ruoka</button></a>
+        </span>
       </div>
 
-      <div class="col-md-4 card">
+      <div class="col-md-4 div-margin">
         <!-- vaatetuotteen tiedot -->
         <h4>Vaatteet</h4>
-        <a th:href="@{/clothinglist}"> <button class="btn" type="button">Lista vaatteista</button></a>
-        <div sec:authorize="hasAuthority('ADMIN')">
-          <a th:href="@{/addclothing}"><button class="btn" type="button">Lisää vaate</button></a>
-        </div>
+        <a th:href="@{/clothinglist}"> <button class="btn btn-sm" type="button">Lista vaatteista</button></a>
+        <span sec:authorize="hasAuthority('ADMIN')">
+          <a th:href="@{/addclothing}"><button class="btn btn-sm" type="button">Lisää vaate</button></a>
+        </span>
       </div>
 
-      <div class="col-md-4 card">
+      <div class="col-md-4 div-margin">
         <!-- lelutuotteen tiedot -->
         <h4>Lelut</h4>
-        <a th:href="@{/toylist}"> <button class="btn" type="button">Lista leluista</button></a>
-        <div sec:authorize="hasAuthority('ADMIN')">
-          <a th:href="@{/addtoy}"><button class="btn" type="button">Lisää lelu</button></a>
-        </div>
+        <a th:href="@{/toylist}"> <button class="btn btn-sm" type="button">Lista leluista</button></a>
+        <span sec:authorize="hasAuthority('ADMIN')">
+          <a th:href="@{/addtoy}"><button class="btn btn-sm" type="button">Lisää lelu</button></a>
+        </span>
       </div>
 
     </div>
