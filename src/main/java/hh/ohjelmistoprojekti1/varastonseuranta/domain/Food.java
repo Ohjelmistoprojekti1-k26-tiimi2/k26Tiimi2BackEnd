@@ -1,12 +1,19 @@
 package hh.ohjelmistoprojekti1.varastonseuranta.domain;
 
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.DogAge;
+import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.FoodType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 public class Food extends Product {
 
-  private String foodType; // kuivaruoka, märkäruoka, raakaruoka, herkätruoat.
-  private String dogAge; // koiran ikä: pentu, adult, seniori
+  @Enumerated(EnumType.STRING)
+  private FoodType foodType; // Kuivaruoka, Märkäruoka, Raakaruoka, Herkätruoat.
+
+  @Enumerated(EnumType.STRING)
+  private DogAge dogAge; // koiran ikä: Pentu, Aikuinen, Vanhus
 
   // CONSTRUCTORS
   public Food() {
@@ -14,27 +21,27 @@ public class Food extends Product {
     super();
   }
 
-  public Food(String name, double price, Manufacturer manufacturer, String foodType, String dogAge) {
+  public Food(String name, double price, Manufacturer manufacturer, FoodType foodType, DogAge age) {
     super(name, price, manufacturer);
     this.foodType = foodType;
-    this.dogAge = dogAge;
+    this.dogAge = age;
   }
 
   // SETTERS
-  public void setFoodType(String foodType) {
+  public void setFoodType(FoodType foodType) {
     this.foodType = foodType;
   }
 
-  public void setDogAge(String dogAge) {
+  public void setDogAge(DogAge dogAge) {
     this.dogAge = dogAge;
   }
 
   // GETTERS
-  public String getFoodType() {
+  public FoodType getFoodType() {
     return foodType;
   }
 
-  public String getDogAge() {
+  public DogAge getDogAge() {
     return dogAge;
   }
 

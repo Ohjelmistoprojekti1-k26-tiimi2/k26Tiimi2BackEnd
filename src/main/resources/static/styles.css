@@ -1,0 +1,131 @@
+/* YLEINEN OSIO */
+
+head {
+  width: 100%;
+}
+
+body {
+  margin: 1%;
+  padding: 20;
+  background-color: #f7f7fb;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.div-margin {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* HEADER */
+
+.header {
+  padding: 10px;
+}
+
+.header-user {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
+
+h1 {
+  color: #3b2068;
+  font-family: "Cabin Sketch", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+.username-color {
+  color: #a78cd9;
+}
+
+/* VÄLIOTSIKOT */
+
+h3,
+h4 {
+  color: #3b2068;
+  font-family: "Averia Libre", system-ui;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* BUTTONS */
+
+.btn {
+  color: #3b2068 !important;
+  background-color: #d6c6f0;
+  margin: 5px;
+}
+
+.btn:hover {
+  color: #3b2068;
+  background-color: #bfa8e6;
+}
+
+/* FORMIT */
+
+.form-container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.header-form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px !important;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #3b2068;
+}
+
+.input-add,
+.select-add {
+  margin-bottom: 10px;
+  margin-top: 5px;
+  color: rgb(156, 160, 160) !important;
+}
+
+::placeholder {
+  color: rgb(156, 160, 160) !important;
+}
+
+/* LISTAUS */
+
+.header-list {
+  position: relative !important;
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 25px;
+}
+
+.back-button {
+  position: absolute !important;
+  left: 0;
+  top: 0;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #e8dff5;
+  color: #3b2068;
+}
+
+/* MANUFACTURER */
+
+.table-manuf {
+  width: 800px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}

@@ -6,59 +6,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tuotelistaus</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Cabin+Sketch:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Oma CSS -->
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
 </head>
 
 <body>
-    <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
+    <!-- Header -->
+    <div class="header">
+        <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
-    <div>
-        <a th:href="@{/index}"><button type="button">Etusivulle</button> </a>
-        <br>
-    </div>
-
-    <div> <!-- kaikki tuotteet -->
-        <h4>Kaikki tuotteet</h4>
-        <div>
-            <table>
-                <tr>
-                    <th>Nimi</th>
-                    <th>Hinta (€)</th>
-                    <th>Valmistaja</th>
-                    <th>Tuotetyyppi</th>
-                    <!--ruokatuotteiden tiedot-->
-                    <th>Ruuan tyyppi</th>
-                    <th>Koiran ikä</th>
-                    <!--lelutuotteiden tiedot-->
-                    <th>Lelutyyppi</th>
-                    <th>Lelun koko</th>
-                    <!--vaatetuotteiden tiedot-->
-                    <th>Vaatteen koko</th>
-                    <th>Vaatteen väri</th>
-                </tr>
-                <tr th:each="product : ${products}">
-                    <!-- yhteiset saraketiedot -->
-                    <td th:text="${product.name}"></td>
-                    <td th:text="${product.price}"></td>
-                    <td th:text="${product.manufacturer} != null ? ${product.manufacturer.mname} : '' "></td>
-                    <td th:text="${product.productType}"></td>
-                    <!--ruokatuotteiden tiedot-->
-                    <td th:text="${product.productType == 'Ruoka' ? product.foodType : '-'}"></td>
-                    <td th:text="${product.productType == 'Ruoka' ? product.dogAge : '-'}"></td>
-                    <!--lelutuotteiden tiedot-->
-                    <td th:text="${product.productType == 'Lelu' ? product.toyType : '-'}"></td>
-                    <td th:text="${product.productType == 'Lelu' ? product.toySize : '-'}"></td>
-                    <!--vaatetuotteiden tiedot-->
-                    <td th:text="${product.productType == 'Vaate' ? product.clothingSize : '-'}"></td>
-                    <td th:text="${product.productType == 'Vaate' ? product.color : '-'}"></td>
-
-
-                </tr>
-            </table>
+        <div class="header-user">
+            <h3>Olet kirjautunut <span sec:authentication="name" class="username-color"></span> käyttäjänä.</h3>
+            <form th:action="@{/logout}" method="post">
+                <input class="btn btn-sm" type="submit" value="Kirjaudu Ulos">
+            </form>
         </div>
     </div>
 
+    <!-- Listaus kaikista tuotteista-->
 
+    <div>
+        <div class="header-list">
+            <div class="back-button">
+                <a th:href="@{/index}">
+                    <button class="btn btn-sm" type="button"> Etusivulle </button>
+                </a>
+            </div>
 
+            <h3>Kaikki tuotteet</h3>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <tr>
+                <th>Nimi</th>
+                <th>Hinta (€)</th>
+                <th>Valmistaja</th>
+                <th>Tuotetyyppi</th>
+                <!--ruokatuotteiden tiedot-->
+                <th>Ruoan tyyppi</th>
+                <th>Koiran ikä</th>
+                <!--lelutuotteiden tiedot-->
+                <th>Lelutyyppi</th>
+                <th>Lelun koko</th>
+                <!--vaatetuotteiden tiedot-->
+                <th>Vaatteen koko</th>
+                <th>Vaatteen väri</th>
+            </tr>
+            <tr th:each="product : ${products}">
+                <!-- yhteiset saraketiedot -->
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.manufacturer} != null ? ${product.manufacturer.mname} : '' "></td>
+                <td th:text="${product.productType}"></td>
+                <!--ruokatuotteiden tiedot-->
+                <td th:text="${product.productType == 'Ruoka' ? product.foodType : '-'}"></td>
+                <td th:text="${product.productType == 'Ruoka' ? product.dogAge : '-'}"></td>
+                <!--lelutuotteiden tiedot-->
+                <td th:text="${product.productType == 'Lelu' ? product.toyType : '-'}"></td>
+                <td th:text="${product.productType == 'Lelu' ? product.toySize : '-'}"></td>
+                <!--vaatetuotteiden tiedot-->
+                <td th:text="${product.productType == 'Vaate' ? product.clothingSize : '-'}"></td>
+                <td th:text="${product.productType == 'Vaate' ? product.color : '-'}"></td>
+            </tr>
+        </table>
+    </div>
 </body>
 
 </html>

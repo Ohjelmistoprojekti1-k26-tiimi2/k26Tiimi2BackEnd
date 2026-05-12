@@ -5,18 +5,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-//import hh.ohjelmistoprojekti1.varastonseuranta.domain.Clothing;
+// import hh.ohjelmistoprojekti1.varastonseuranta.domain.Clothing;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ClothingRepository;
-//import hh.ohjelmistoprojekti1.varastonseuranta.domain.Food;
+// import hh.ohjelmistoprojekti1.varastonseuranta.domain.Food;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.FoodRepository;
-//import hh.ohjelmistoprojekti1.varastonseuranta.domain.Manufacturer;
+// import hh.ohjelmistoprojekti1.varastonseuranta.domain.Manufacturer;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ManufacturerRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ProductRepository;
-//import hh.ohjelmistoprojekti1.varastonseuranta.domain.Size;
-//import hh.ohjelmistoprojekti1.varastonseuranta.domain.Toy;
+// import hh.ohjelmistoprojekti1.varastonseuranta.domain.Toy;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.ToyRepository;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.User;
 import hh.ohjelmistoprojekti1.varastonseuranta.domain.UserRepository;
+// import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.DogAge;
+// import hh.ohjelmistoprojekti1.varastonseuranta.domain.enums.Size;
 
 @SpringBootApplication
 public class VarastonseurantaApplication {
@@ -78,6 +79,7 @@ public class VarastonseurantaApplication {
 			 * 
 			 * // food -data
 			 * Food food1 = new Food("Kananappulat", 29.95, manufacturer4, "kuivaruoka",
+			 * <<<<<<< HEAD
 			 * "aikuinen");
 			 * foodRepository.save(food1);
 			 * Food food2 = new Food("Koiranmakkara, nauta", 5.95, manufacturer5,
@@ -88,6 +90,18 @@ public class VarastonseurantaApplication {
 			 * foodRepository.save(food3);
 			 * Food food4 = new Food("Lammasta ja riisiä, pentunappulat", 35.95,
 			 * manufacturer4, "kuivaruoka", "juniori");
+			 * =======
+			 * DogAge.Aikuinen);
+			 * foodRepository.save(food1);
+			 * Food food2 = new Food("Koiranmakkara, nauta", 5.95, manufacturer5,
+			 * "märkäruoka", DogAge.Aikuinen);
+			 * foodRepository.save(food2);
+			 * Food food3 = new Food("Lammasnappulat", 20.99, manufacturer6, "kuivaruoka",
+			 * DogAge.Vanhus);
+			 * foodRepository.save(food3);
+			 * Food food4 = new Food("Lammasta ja riisiä, pentunappulat", 35.95,
+			 * manufacturer4, "kuivaruoka", DogAge.Pentu);
+			 * >>>>>>> Tanja
 			 * foodRepository.save(food4);
 			 * 
 			 * // clothing -data

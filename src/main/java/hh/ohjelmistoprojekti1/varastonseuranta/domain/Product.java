@@ -30,7 +30,7 @@ public class Product {
   private String productType;
 
   @NotNull(message = "Hintatieto on pakollinen")
-  @DecimalMin(value = "0.0")
+  @DecimalMin(value = "0.00")
   private double price;
 
   @JsonIgnoreProperties("products")

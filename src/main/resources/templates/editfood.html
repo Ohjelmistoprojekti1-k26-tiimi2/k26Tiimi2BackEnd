@@ -5,52 +5,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muokkaa tuotetta</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Cabin+Sketch:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Oma CSS -->
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
 </head>
 
 <body>
-    <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
+    <!-- Header -->
+    <div class="header">
+        <h1> VARASTONSEURANTAJÄRJESTELMÄ </h1>
 
-    <a th:href="@{/foodlist}"><button type="button">Takaisin</button></a>
+        <div class="header-user">
+            <h3>Olet kirjautunut <span sec:authentication="name" class="username-color"></span> käyttäjänä.</h3>
+            <form th:action="@{/logout}" method="post">
+                <input class="btn btn-sm" type="submit" value="Kirjaudu Ulos">
+            </form>
+        </div>
+    </div>
 
-    <h4>Muokkaa tuotetta</h4>
+    <!-- Formi -->
 
-    <form method="post" action="#" th:action="@{/savefood}" th:object="${food}">
-
-        <input type="hidden" th:field="*{productId}" />
-
-        <div>
-            <label for="">Ruuan nimi: </label>
-            <input type="text" th:field="*{name}" placeholder="Nimi">
+    <div class="form-container">
+        <div class="header-form">
+            <h4>Muokkaa ruokaa</h4>
+            <a th:href="@{/index}"> <button class="btn btn-sm" type="button"> Etusivulle </button></a>
         </div>
 
-        <div>
-            <label for="">Hinta: </label>
-            <input type="text" th:field="*{price}" placeholder="Hinta">
-        </div>
+        <!--formi ruoan muokkaamiseksi -->
+        <form method="post" action="#" th:action="@{/savefood}" th:object="${food}">
 
-        <div class="col">
-            <label for="">Valmistaja: </label>
-            <select id="manufacturerlist" th:field="*{manufacturer}" class="form-select">
-                <option value="">Valitse valmistaja</option>
-                <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.manufacturerId}"
-                    th:text="${manufacturer.mname}">
-                </option>
-            </select>
-        </div>
+            <input type="hidden" th:field="*{productId}" />
 
-        <div>
-            <label for="">Ruuan tyyppi: </label>
-            <input type="text" th:field="*{foodType}" placeholder="Ruuan tyyppi">
-        </div>
+            <!-- Ruoan nimi -->
+            <div class="form-group">
+                <label for=""> Ruoan nimi: </label>
+                <input class="form-control" type="text" th:field="*{name}" placeholder="Nimi">
+            </div>
 
-        <div>
-            <label for="">Koiran ikä: </label>
-            <input type="text" th:field="*{dogAge}" placeholder="Koiran ikä">
-        </div>
+            <!-- Ruoan hinta -->
+            <div class="form-group">
+                <label for="">Hinta: </label>
+                <input class="form-control" type="text" th:field="*{price}" placeholder="Hinta">
+            </div>
 
-        <button type="submit">Tallenna</button>
+            <!-- Ruoan valmistaja -->
+            <div class="form-group">
+                <label for="">Valmistaja: </label>
+                <select id="manufacturerlist" th:field="*{manufacturer}" class="form-select form-control">
+                    <option value="">Valitse valmistaja</option>
+                    <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.manufacturerId}"
+                        th:text="${manufacturer.mname}">
+                    </option>
+                </select>
+            </div>
 
-    </form>
+            <!-- Ruoan tyyppi -->
+            <div class="form-group">
+                <label for=""> Ruoan tyyppi: </label>
+                <select th:field="*{foodType}" class="form-select form-control">
+                    <option value="">Valitse ruoan tyyppi</option>
+                    <option th:each="ftype : ${foodtype}" th:value="${ftype}" th:text="${ftype}"></option>
+                </select>
+            </div>
+
+            <!-- Koiran ikä -->
+            <div class="form-group">
+                <label for="">Koiran ikä: </label>
+                <select th:field="*{dogAge}" class="form-select form-control">
+                    <option value="">Valitse koiran ikä</option>
+                    <option th:each="age : ${dogage}" th:value="${age}" th:text="${age}"></option>
+                </select>
+            </div>
+
+            <!-- Tallenna & Peruuta -->
+            <div class="div-margin">
+                <button class="btn btn-sm" type="submit">Tallenna</button>
+                <a th:href="@{/foodlist}"> <button class="btn btn-sm" type="button"> Peruuta </button></a>
+            </div>
+        </form>
 
 </body>
 
