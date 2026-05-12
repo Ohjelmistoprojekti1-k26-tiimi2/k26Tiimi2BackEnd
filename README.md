@@ -16,7 +16,8 @@ Tämä on Ohjelmistoprojekti 1 -kurssin tuotoksena syntynyt Spring Boot -webbiso
 
 ## Julkaisu
 Sovellus on julkaistu CSC Rahti -verkkosivulle osoitteeseen 
-https://varastonseurantabackend-ohjelmistoprojekti1r2.2.rahtiapp.fi
+https://varastonseurantabackend-ohjelmistoprojekti1r2.2.rahtiapp.fi .
+Sovellukseen kirjautuminen onnistuu admin ja user -käyttäjätunnuksilla.
 
 ## Tekijät
-Back end:in päävastuutekijöinä Inkala Arttu, Marttinen Greetel, Vatka Tanja
+Back end:in päävastuutekijöinä Inkala Arttu, Marttinen Greetel, Vatka Tanja.
